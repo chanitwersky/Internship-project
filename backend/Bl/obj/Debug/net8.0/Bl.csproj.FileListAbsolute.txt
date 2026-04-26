@@ -1,0 +1,15 @@
+H:\c# project\bigProject\Bl\bin\Debug\net8.0\Bl.deps.json
+H:\c# project\bigProject\Bl\bin\Debug\net8.0\Bl.dll
+H:\c# project\bigProject\Bl\bin\Debug\net8.0\Bl.pdb
+H:\c# project\bigProject\Bl\obj\Debug\net8.0\Bl.GeneratedMSBuildEditorConfig.editorconfig
+H:\c# project\bigProject\Bl\obj\Debug\net8.0\Bl.AssemblyInfoInputs.cache
+H:\c# project\bigProject\Bl\obj\Debug\net8.0\Bl.AssemblyInfo.cs
+H:\c# project\bigProject\Bl\obj\Debug\net8.0\Bl.csproj.CoreCompileInputs.cache
+H:\c# project\bigProject\Bl\obj\Debug\net8.0\Bl.dll
+H:\c# project\bigProject\Bl\obj\Debug\net8.0\refint\Bl.dll
+H:\c# project\bigProject\Bl\obj\Debug\net8.0\Bl.pdb
+H:\c# project\bigProject\Bl\obj\Debug\net8.0\ref\Bl.dll
+H:\c# project\bigProject\Bl\obj\Debug\net8.0\Bl.csproj.AssemblyReference.cache
+H:\c# project\bigProject\Bl\bin\Debug\net8.0\Dal.dll
+H:\c# project\bigProject\Bl\bin\Debug\net8.0\Dal.pdb
+H:\c# project\bigProject\Bl\obj\Debug\net8.0\Bl.csproj.Up2Date
