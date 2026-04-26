@@ -1,0 +1,14 @@
+H:\c# project\bigProject\Dal\bin\Debug\net8.0\Dal.deps.json
+H:\c# project\bigProject\Dal\bin\Debug\net8.0\Dal.runtimeconfig.json
+H:\c# project\bigProject\Dal\bin\Debug\net8.0\Dal.dll
+H:\c# project\bigProject\Dal\bin\Debug\net8.0\Dal.pdb
+H:\c# project\bigProject\Dal\obj\Debug\net8.0\Dal.csproj.AssemblyReference.cache
+H:\c# project\bigProject\Dal\obj\Debug\net8.0\Dal.GeneratedMSBuildEditorConfig.editorconfig
+H:\c# project\bigProject\Dal\obj\Debug\net8.0\Dal.AssemblyInfoInputs.cache
+H:\c# project\bigProject\Dal\obj\Debug\net8.0\Dal.AssemblyInfo.cs
+H:\c# project\bigProject\Dal\obj\Debug\net8.0\Dal.csproj.CoreCompileInputs.cache
+H:\c# project\bigProject\Dal\obj\Debug\net8.0\Dal.dll
+H:\c# project\bigProject\Dal\obj\Debug\net8.0\refint\Dal.dll
+H:\c# project\bigProject\Dal\obj\Debug\net8.0\Dal.pdb
+H:\c# project\bigProject\Dal\obj\Debug\net8.0\Dal.genruntimeconfig.cache
+H:\c# project\bigProject\Dal\obj\Debug\net8.0\ref\Dal.dll
