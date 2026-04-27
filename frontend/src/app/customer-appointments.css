@@ -1,0 +1,21 @@
+section {
+  max-width: 760px;
+  direction: rtl;
+  text-align: right;
+}
+
+input {
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+button {
+  padding: 0.5rem 0.75rem;
+}
+
+li {
+  margin-bottom: 1rem;
+  list-style: none;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}

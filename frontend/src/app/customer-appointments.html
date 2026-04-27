@@ -1,0 +1,43 @@
+<section>
+  <h2>תורי לקוח</h2>
+  <p>הזן תעודת זהות של לקוח ולחץ טען.</p>
+  <div>
+    <input type="text" placeholder="תעודת זהות" #customerIdInput />
+    <button type="button" (click)="loadData(customerIdInput.value)">טען נתונים</button>
+  </div>
+
+  <p *ngIf="error" style="color: red">{{ error }}</p>
+
+  <div *ngIf="loadingAppointments || loadingHistory">
+    <p *ngIf="loadingAppointments">טוען תורים...</p>
+    <p *ngIf="loadingHistory">טוען היסטוריה...</p>
+  </div>
+
+  <h3>תורים עתידיים</h3>
+  <ul *ngIf="appointments.length">
+    <li *ngFor="let item of appointments">
+      <strong>מזהה:</strong> {{ item.id }}
+      <br />
+      <strong>רופא:</strong> {{ item.workerId }}
+      <br />
+      <strong>תאריך:</strong> {{ item.date }}
+      <br />
+      <strong>טיפול:</strong> {{ item.treatmentDescription }}
+    </li>
+  </ul>
+  <p *ngIf="!loadingAppointments && !appointments.length">אין תורים עתידיים.</p>
+
+  <h3>היסטוריית תורים</h3>
+  <ul *ngIf="history.length">
+    <li *ngFor="let item of history">
+      <strong>מזהה:</strong> {{ item.id }}
+      <br />
+      <strong>רופא:</strong> {{ item.workerId }}
+      <br />
+      <strong>תאריך:</strong> {{ item.date }}
+      <br />
+      <strong>טיפול:</strong> {{ item.treatmentDescription }}
+    </li>
+  </ul>
+  <p *ngIf="!loadingHistory && !history.length">אין היסטוריית תורים.</p>
+</section>
