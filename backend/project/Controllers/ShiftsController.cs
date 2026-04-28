@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc; 
 using Bl.Services;
 using Dal.Models;
+using Bl.Api;
 
 namespace server.Controllers
 {
@@ -10,7 +11,7 @@ namespace server.Controllers
     [Route("api/[controller]")]
     public class ShiftsController : ControllerBase
     {
-        private readonly ShiftBi _shiftBi;
+        private readonly IShiftBi _shiftBi;
 
        
         public ShiftsController(IShiftBi shiftBi)

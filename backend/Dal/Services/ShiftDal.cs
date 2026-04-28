@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dal.Api;
 using Dal.Models;
 
-using MyContext = Dal.Models.HCProjectDatabaseMyDbMdfContext;
+
 
 namespace Dal.Services
 {
     public class ShiftDal : IShiftDal
     {
-        private readonly MyContext _context;
-        public ShiftDal(MyContext context)
+        private readonly Datamanager _context;
+        public ShiftDal(Datamanager context)
         {
             _context = context;
         }

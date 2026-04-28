@@ -1,0 +1,6 @@
+.vs/
+backend/.vs/
+[Bb]in/
+[Oo]bj/
+*.mdf
+*.ldf

@@ -1,0 +1,185 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BDB07145-3EC9-4EBA-8B4B-C2E7D693EF64}|project\\server.csproj|e:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDB07145-3EC9-4EBA-8B4B-C2E7D693EF64}|project\\server.csproj|solutionrelative:project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D5A5D48-BE99-446F-8AF6-D09774AEB974}|Bl\\Bl.csproj|e:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\bl\\services\\shiftbi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D5A5D48-BE99-446F-8AF6-D09774AEB974}|Bl\\Bl.csproj|solutionrelative:bl\\services\\shiftbi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62F3CB0A-3572-4624-A955-321955A076B1}|Dal\\Dal.csproj|e:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\dal\\services\\shiftdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62F3CB0A-3572-4624-A955-321955A076B1}|Dal\\Dal.csproj|solutionrelative:dal\\services\\shiftdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDB07145-3EC9-4EBA-8B4B-C2E7D693EF64}|project\\server.csproj|e:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\project\\controllers\\shiftscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDB07145-3EC9-4EBA-8B4B-C2E7D693EF64}|project\\server.csproj|solutionrelative:project\\controllers\\shiftscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D5A5D48-BE99-446F-8AF6-D09774AEB974}|Bl\\Bl.csproj|e:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\bl\\api\\ishiftbi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D5A5D48-BE99-446F-8AF6-D09774AEB974}|Bl\\Bl.csproj|solutionrelative:bl\\api\\ishiftbi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62F3CB0A-3572-4624-A955-321955A076B1}|Dal\\Dal.csproj|e:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\dal\\models\\datamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62F3CB0A-3572-4624-A955-321955A076B1}|Dal\\Dal.csproj|solutionrelative:dal\\models\\datamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62F3CB0A-3572-4624-A955-321955A076B1}|Dal\\Dal.csproj|e:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\dal\\models\\queue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62F3CB0A-3572-4624-A955-321955A076B1}|Dal\\Dal.csproj|solutionrelative:dal\\models\\queue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62F3CB0A-3572-4624-A955-321955A076B1}|Dal\\Dal.csproj|e:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\dal\\models\\queuehistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62F3CB0A-3572-4624-A955-321955A076B1}|Dal\\Dal.csproj|solutionrelative:dal\\models\\queuehistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62F3CB0A-3572-4624-A955-321955A076B1}|Dal\\Dal.csproj|e:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\dal\\models\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62F3CB0A-3572-4624-A955-321955A076B1}|Dal\\Dal.csproj|solutionrelative:dal\\models\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\project\\Program.cs",
+              "RelativeDocumentMoniker": "project\\Program.cs",
+              "ToolTip": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\project\\Program.cs*",
+              "RelativeToolTip": "project\\Program.cs*",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T17:56:46.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ShiftsController.cs",
+              "DocumentMoniker": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\project\\Controllers\\ShiftsController.cs",
+              "RelativeDocumentMoniker": "project\\Controllers\\ShiftsController.cs",
+              "ToolTip": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\project\\Controllers\\ShiftsController.cs",
+              "RelativeToolTip": "project\\Controllers\\ShiftsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T17:52:13.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ShiftBi.cs",
+              "DocumentMoniker": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Bl\\Services\\ShiftBi.cs",
+              "RelativeDocumentMoniker": "Bl\\Services\\ShiftBi.cs",
+              "ToolTip": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Bl\\Services\\ShiftBi.cs",
+              "RelativeToolTip": "Bl\\Services\\ShiftBi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T17:51:08.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IShiftBi.cs",
+              "DocumentMoniker": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Bl\\Api\\IShiftBi.cs",
+              "RelativeDocumentMoniker": "Bl\\Api\\IShiftBi.cs",
+              "ToolTip": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Bl\\Api\\IShiftBi.cs",
+              "RelativeToolTip": "Bl\\Api\\IShiftBi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T17:51:01.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Datamanager.cs",
+              "DocumentMoniker": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Dal\\Models\\Datamanager.cs",
+              "RelativeDocumentMoniker": "Dal\\Models\\Datamanager.cs",
+              "ToolTip": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Dal\\Models\\Datamanager.cs",
+              "RelativeToolTip": "Dal\\Models\\Datamanager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T17:50:11.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Queue.cs",
+              "DocumentMoniker": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Dal\\Models\\Queue.cs",
+              "RelativeDocumentMoniker": "Dal\\Models\\Queue.cs",
+              "ToolTip": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Dal\\Models\\Queue.cs",
+              "RelativeToolTip": "Dal\\Models\\Queue.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T17:50:10.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "QueueHistory.cs",
+              "DocumentMoniker": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Dal\\Models\\QueueHistory.cs",
+              "RelativeDocumentMoniker": "Dal\\Models\\QueueHistory.cs",
+              "ToolTip": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Dal\\Models\\QueueHistory.cs",
+              "RelativeToolTip": "Dal\\Models\\QueueHistory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T17:50:09.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ShiftDal.cs",
+              "DocumentMoniker": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Dal\\Services\\ShiftDal.cs",
+              "RelativeDocumentMoniker": "Dal\\Services\\ShiftDal.cs",
+              "ToolTip": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Dal\\Services\\ShiftDal.cs",
+              "RelativeToolTip": "Dal\\Services\\ShiftDal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T17:23:38.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Worker.cs",
+              "DocumentMoniker": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Dal\\Models\\Worker.cs",
+              "RelativeDocumentMoniker": "Dal\\Models\\Worker.cs",
+              "ToolTip": "E:\\\u05D8\u05D5\u05D1\u05D4\\\u05D4\u05E0\u05D3\u05E1\u05D0\u05D9\u05DD\\\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 c#\\28.4\\backend\\Dal\\Models\\Worker.cs",
+              "RelativeToolTip": "Dal\\Models\\Worker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T17:50:07.401Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

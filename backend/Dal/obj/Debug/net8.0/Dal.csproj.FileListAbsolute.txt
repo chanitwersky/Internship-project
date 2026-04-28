@@ -1,0 +1,15 @@
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\Dal.csproj.AssemblyReference.cache
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\Dal.GeneratedMSBuildEditorConfig.editorconfig
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\Dal.AssemblyInfoInputs.cache
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\Dal.AssemblyInfo.cs
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\Dal.csproj.CoreCompileInputs.cache
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\Dal.sourcelink.json
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\bin\Debug\net8.0\Dal.deps.json
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\bin\Debug\net8.0\Dal.runtimeconfig.json
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\bin\Debug\net8.0\Dal.dll
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\bin\Debug\net8.0\Dal.pdb
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\Dal.dll
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\refint\Dal.dll
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\Dal.pdb
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\Dal.genruntimeconfig.cache
+E:\טובה\הנדסאים\פרויקט סופי c#\28.4\backend\Dal\obj\Debug\net8.0\ref\Dal.dll

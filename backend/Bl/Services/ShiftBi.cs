@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bl.Api;
+using Dal.Api;
 using Dal.Models;
 using Dal.Services;
 
@@ -10,7 +12,7 @@ namespace Bl.Services
 {
     public class ShiftBi : IShiftBi
     {
-        private readonly ShiftDal _shiftDal;
+        private readonly IShiftDal _shiftDal;
         public ShiftBi(IShiftDal shiftDal)
         {
             _shiftDal = shiftDal;
