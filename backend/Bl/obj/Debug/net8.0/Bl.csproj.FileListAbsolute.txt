@@ -1,0 +1,6 @@
+C:\Users\משתמש\Documents\לימודים\c#\backend\Bl\obj\Debug\net8.0\Bl.csproj.AssemblyReference.cache
+C:\Users\משתמש\Documents\לימודים\c#\backend\Bl\obj\Debug\net8.0\Bl.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\משתמש\Documents\לימודים\c#\backend\Bl\obj\Debug\net8.0\Bl.AssemblyInfoInputs.cache
+C:\Users\משתמש\Documents\לימודים\c#\backend\Bl\obj\Debug\net8.0\Bl.AssemblyInfo.cs
+C:\Users\משתמש\Documents\לימודים\c#\backend\Bl\obj\Debug\net8.0\Bl.csproj.CoreCompileInputs.cache
+C:\Users\משתמש\Documents\לימודים\c#\backend\Bl\obj\Debug\net8.0\Bl.sourcelink.json

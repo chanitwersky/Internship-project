@@ -1,0 +1,6 @@
+C:\Users\משתמש\Documents\לימודים\c#\backend\Dal\obj\Debug\net8.0\Dal.csproj.AssemblyReference.cache
+C:\Users\משתמש\Documents\לימודים\c#\backend\Dal\obj\Debug\net8.0\Dal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\משתמש\Documents\לימודים\c#\backend\Dal\obj\Debug\net8.0\Dal.AssemblyInfoInputs.cache
+C:\Users\משתמש\Documents\לימודים\c#\backend\Dal\obj\Debug\net8.0\Dal.AssemblyInfo.cs
+C:\Users\משתמש\Documents\לימודים\c#\backend\Dal\obj\Debug\net8.0\Dal.csproj.CoreCompileInputs.cache
+C:\Users\משתמש\Documents\לימודים\c#\backend\Dal\obj\Debug\net8.0\Dal.sourcelink.json
