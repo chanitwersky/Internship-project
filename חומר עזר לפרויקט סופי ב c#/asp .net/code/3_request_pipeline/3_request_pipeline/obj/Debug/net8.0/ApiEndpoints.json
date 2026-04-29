@@ -1,0 +1,64 @@
+[
+  {
+    "ContainingType": "_3_request_pipeline.Controllers.CalculatorController",
+    "Method": "Add",
+    "RelativePath": "api/Calculator/Add",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "num1",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "num2",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "_3_request_pipeline.Controllers.CalculatorController",
+    "Method": "Divide",
+    "RelativePath": "api/Calculator/Divide",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "num1",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "num2",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Single",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

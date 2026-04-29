@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|c:\\users\\this user\\desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\controllers\\costumescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|solutionrelative:4_full\\controllers\\costumescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|c:\\users\\this user\\desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\data\\storedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|solutionrelative:4_full\\data\\storedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|c:\\users\\this user\\desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\migrations\\20260224154704_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|solutionrelative:4_full\\migrations\\20260224154704_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|c:\\users\\this user\\desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\services\\costumesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|solutionrelative:4_full\\services\\costumesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|c:\\users\\this user\\desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\models\\costume.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|solutionrelative:4_full\\models\\costume.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\\u05D2\u05D5\u05D8\u05E4\u05E8\u05D9\u05D3 \u05D0\u05D9\u05DC\u05D4\\AppData\\Local\\Temp\\bp1h0uek..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|c:\\users\\this user\\desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{68BDFA62-FA48-4A29-8CEA-5A694169A29A}|4_full\\4_full.csproj|solutionrelative:4_full\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "bp1h0uek..sql",
+              "DocumentMoniker": "C:\\Users\\\u05D2\u05D5\u05D8\u05E4\u05E8\u05D9\u05D3 \u05D0\u05D9\u05DC\u05D4\\AppData\\Local\\Temp\\bp1h0uek..sql",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\\u05D2\u05D5\u05D8\u05E4\u05E8\u05D9\u05D3 \u05D0\u05D9\u05DC\u05D4\\AppData\\Local\\Temp\\bp1h0uek..sql",
+              "ToolTip": "C:\\Users\\\u05D2\u05D5\u05D8\u05E4\u05E8\u05D9\u05D3 \u05D0\u05D9\u05DC\u05D4\\AppData\\Local\\Temp\\bp1h0uek..sql",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\\u05D2\u05D5\u05D8\u05E4\u05E8\u05D9\u05D3 \u05D0\u05D9\u05DC\u05D4\\AppData\\Local\\Temp\\bp1h0uek..sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-02-24T16:20:13.486Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CostumesController.cs",
+              "DocumentMoniker": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Controllers\\CostumesController.cs",
+              "RelativeDocumentMoniker": "4_full\\Controllers\\CostumesController.cs",
+              "ToolTip": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Controllers\\CostumesController.cs",
+              "RelativeToolTip": "4_full\\Controllers\\CostumesController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwAsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T16:08:08.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CostumesService.cs",
+              "DocumentMoniker": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Services\\CostumesService.cs",
+              "RelativeDocumentMoniker": "4_full\\Services\\CostumesService.cs",
+              "ToolTip": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Services\\CostumesService.cs",
+              "RelativeToolTip": "4_full\\Services\\CostumesService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T16:00:48.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20260224154704_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Migrations\\20260224154704_InitialCreate.cs",
+              "RelativeDocumentMoniker": "4_full\\Migrations\\20260224154704_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Migrations\\20260224154704_InitialCreate.cs",
+              "RelativeToolTip": "4_full\\Migrations\\20260224154704_InitialCreate.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwA8AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T15:47:13.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Program.cs",
+              "RelativeDocumentMoniker": "4_full\\Program.cs",
+              "ToolTip": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Program.cs",
+              "RelativeToolTip": "4_full\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T15:44:18.629Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StoreDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Data\\StoreDbContext.cs",
+              "RelativeDocumentMoniker": "4_full\\Data\\StoreDbContext.cs",
+              "ToolTip": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Data\\StoreDbContext.cs",
+              "RelativeToolTip": "4_full\\Data\\StoreDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T15:29:22.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Costume.cs",
+              "DocumentMoniker": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Models\\Costume.cs",
+              "RelativeDocumentMoniker": "4_full\\Models\\Costume.cs",
+              "ToolTip": "C:\\Users\\This User\\Desktop\\project c#\\\u05D7\u05D5\u05DE\u05E8 \u05E2\u05D6\u05E8 \u05DC\u05E4\u05E8\u05D5\u05D9\u05E7\u05D8 \u05E1\u05D5\u05E4\u05D9 \u05D1 c#\\asp .net\\code\\4_full\\4_full\\Models\\Costume.cs",
+              "RelativeToolTip": "4_full\\Models\\Costume.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T15:25:48.36Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

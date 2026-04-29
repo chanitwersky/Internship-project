@@ -1,0 +1,5 @@
+dotnet tool install --global dotnet-ef
+dotnet ef migrations add InitialCreate --project <project_name>
+dotnet ef database update --project <project_name>
+
+Connection string: "Data Source=dsql;Integrated Security=True;Trust Server Certificate=True"

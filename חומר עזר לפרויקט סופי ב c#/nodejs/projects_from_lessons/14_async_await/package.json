@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/superagent": "^8.1.9"
+  },
+  "dependencies": {
+    "superagent": "^10.2.3"
+  }
+}

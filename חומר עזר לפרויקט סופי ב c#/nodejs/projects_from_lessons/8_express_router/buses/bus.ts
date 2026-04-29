@@ -1,0 +1,3 @@
+interface Bus {
+    number: Number;
+}

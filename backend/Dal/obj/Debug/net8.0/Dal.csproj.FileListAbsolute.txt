@@ -1,0 +1,15 @@
+C:\Users\This User\Desktop\project c#\backend\Dal\bin\Debug\net8.0\Dal.deps.json
+C:\Users\This User\Desktop\project c#\backend\Dal\bin\Debug\net8.0\Dal.runtimeconfig.json
+C:\Users\This User\Desktop\project c#\backend\Dal\bin\Debug\net8.0\Dal.dll
+C:\Users\This User\Desktop\project c#\backend\Dal\bin\Debug\net8.0\Dal.pdb
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\Dal.csproj.AssemblyReference.cache
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\Dal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\Dal.AssemblyInfoInputs.cache
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\Dal.AssemblyInfo.cs
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\Dal.csproj.CoreCompileInputs.cache
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\Dal.sourcelink.json
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\Dal.dll
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\refint\Dal.dll
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\Dal.pdb
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\Dal.genruntimeconfig.cache
+C:\Users\This User\Desktop\project c#\backend\Dal\obj\Debug\net8.0\ref\Dal.dll
