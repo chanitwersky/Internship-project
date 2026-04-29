@@ -1,6 +1,5 @@
-.vs/
-backend/.vs/
-[Bb]in/
-[Oo]bj/
+/.vs/
+/bin/
+/obj/
 *.mdf
 *.ldf
