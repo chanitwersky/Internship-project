@@ -1,43 +1,141 @@
-<section>
-  <h2>תורי לקוח</h2>
-  <p>הזן תעודת זהות של לקוח ולחץ טען.</p>
-  <div>
-    <input type="text" placeholder="תעודת זהות" #customerIdInput />
-    <button type="button" (click)="loadData(customerIdInput.value)">טען נתונים</button>
+<section class="page-shell">
+  <div class="header">
+    <div>
+      <h2>ניהול תורים ולקוח</h2>
+      <p>הזן תעודת זהות וחלץ תורים, היסטוריה ופרטי לקוח.</p>
+    </div>
+    <div class="search-row">
+      <input type="text" placeholder="תעודת זהות" #customerIdInput />
+      <button type="button" (click)="loadData(customerIdInput.value)">טען נתונים</button>
+    </div>
   </div>
 
-  <p *ngIf="error" style="color: red">{{ error }}</p>
+  <p *ngIf="error" class="message error">{{ error }}</p>
+  <p *ngIf="status" class="message success">{{ status }}</p>
 
-  <div *ngIf="loadingAppointments || loadingHistory">
-    <p *ngIf="loadingAppointments">טוען תורים...</p>
-    <p *ngIf="loadingHistory">טוען היסטוריה...</p>
+  <div class="loader-row" *ngIf="loadingAppointments || loadingHistory || loadingDetails">
+    <span *ngIf="loadingAppointments">טוען תורים...</span>
+    <span *ngIf="loadingHistory">טוען היסטוריה...</span>
+    <span *ngIf="loadingDetails">טוען פרטי לקוח...</span>
   </div>
 
-  <h3>תורים עתידיים</h3>
-  <ul *ngIf="appointments.length">
-    <li *ngFor="let item of appointments">
-      <strong>מזהה:</strong> {{ item.id }}
-      <br />
-      <strong>רופא:</strong> {{ item.workerId }}
-      <br />
-      <strong>תאריך:</strong> {{ item.date }}
-      <br />
-      <strong>טיפול:</strong> {{ item.treatmentDescription }}
-    </li>
-  </ul>
-  <p *ngIf="!loadingAppointments && !appointments.length">אין תורים עתידיים.</p>
+  <section class="forms-grid" *ngIf="currentCustomerId">
+    <div class="card">
+      <h3>צור תור חדש</h3>
+      <div class="form-field">
+        <label>מזהה רופא</label>
+        <input type="text" [(ngModel)]="createWorkerId" placeholder="תעודת זהות רופא" />
+      </div>
+      <div class="form-field">
+        <label>תיאור טיפול</label>
+        <input type="text" [(ngModel)]="createDescription" placeholder="תיאור הטיפול" />
+      </div>
+      <div class="form-field">
+        <label>תאריך ושעה</label>
+        <input type="datetime-local" [(ngModel)]="createDate" />
+      </div>
+      <button type="button" class="primary" (click)="createAppointment()">צור תור חדש</button>
+    </div>
 
-  <h3>היסטוריית תורים</h3>
-  <ul *ngIf="history.length">
-    <li *ngFor="let item of history">
-      <strong>מזהה:</strong> {{ item.id }}
-      <br />
-      <strong>רופא:</strong> {{ item.workerId }}
-      <br />
-      <strong>תאריך:</strong> {{ item.date }}
-      <br />
-      <strong>טיפול:</strong> {{ item.treatmentDescription }}
-    </li>
-  </ul>
-  <p *ngIf="!loadingHistory && !history.length">אין היסטוריית תורים.</p>
+    <div class="card">
+      <h3>עדכון תור קיים</h3>
+      <div class="form-field">
+        <label>בחר תור מהרשימה</label>
+      </div>
+      <div class="form-field">
+        <label>מזהה תור</label>
+        <input type="number" [(ngModel)]="appointmentId" placeholder="מספר תור" />
+      </div>
+      <div class="form-field">
+        <label>מזהה רופא</label>
+        <input type="text" [(ngModel)]="appointmentWorkerId" placeholder="תעודת זהות רופא" />
+      </div>
+      <div class="form-field">
+        <label>תיאור טיפול</label>
+        <input type="text" [(ngModel)]="appointmentDescription" placeholder="תיאור הטיפול" />
+      </div>
+      <div class="form-field">
+        <label>תאריך ושעה</label>
+        <input type="datetime-local" [(ngModel)]="appointmentDate" />
+      </div>
+      <div class="button-row">
+        <button type="button" class="primary" (click)="submitAppointment()">עדכן תור</button>
+        <button type="button" class="secondary" (click)="clearSelectedAppointment()">נקה בחירת תור</button>
+      </div>
+    </div>
+
+    <div class="card table-card full-width customer-info-card">
+      <h3>פרטי לקוח</h3>
+      <div class="customer-info">
+        <div><strong>תעודת זהות:</strong> {{ currentCustomerId }}</div>
+        <div><strong>שם מלא:</strong> {{ settingsFirstName }} {{ settingsLastName }}</div>
+        <div><strong>טלפון:</strong> {{ settingsPhone }}</div>
+        <div><strong>כתובת:</strong> {{ settingsAdress }}</div>
+        <div><strong>אימייל:</strong> {{ settingsEmail }}</div>
+        <div><strong>ביקור אחרון:</strong> {{ settingsLastVisit ? (settingsLastVisit | date : 'yyyy-MM-dd HH:mm') : 'לא קיים' }}</div>
+      </div>
+    </div>
+
+    <div class="card full-width">
+      <h3>עדכון הגדרות לקוח</h3>
+      <div class="form-grid">
+        <div class="form-field">
+          <label>שם פרטי</label>
+          <input type="text" [(ngModel)]="settingsFirstName" placeholder="שם פרטי" />
+        </div>
+        <div class="form-field">
+          <label>שם משפחה</label>
+          <input type="text" [(ngModel)]="settingsLastName" placeholder="שם משפחה" />
+        </div>
+        <div class="form-field">
+          <label>טלפון</label>
+          <input type="text" [(ngModel)]="settingsPhone" placeholder="טלפון" />
+        </div>
+        <div class="form-field">
+          <label>כתובת</label>
+          <input type="text" [(ngModel)]="settingsAdress" placeholder="כתובת" />
+        </div>
+        <div class="form-field">
+          <label>אימייל</label>
+          <input type="email" [(ngModel)]="settingsEmail" placeholder="אימייל" />
+        </div>
+        <div class="form-field">
+          <label>תאריך ביקור אחרון</label>
+          <input type="datetime-local" [(ngModel)]="settingsLastVisit" />
+        </div>
+      </div>
+      <button type="button" class="primary" (click)="submitSettings()">עדכן הגדרות לקוח</button>
+    </div>
+  </section>
+
+  <section class="tables-row" *ngIf="currentCustomerId">
+    <div class="card table-card">
+      <h3>תורים עתידיים</h3>
+      <ul *ngIf="appointments.length" class="appointment-list">
+        <li *ngFor="let item of appointments" class="appointment-item">
+          <div class="appointment-top">
+            <div class="appointment-title">תור #{{ item.id }}</div>
+            <button type="button" class="secondary" (click)="selectAppointment(item)">בחר לעריכה</button>
+          </div>
+          <div><strong>רופא:</strong> {{ item.workerId }}</div>
+          <div><strong>תאריך:</strong> {{ item.date }}</div>
+          <div><strong>טיפול:</strong> {{ item.treatmentDescription }}</div>
+        </li>
+      </ul>
+      <p *ngIf="!loadingAppointments && !appointments.length">אין תורים במערכת.</p>
+    </div>
+
+    <div class="card table-card">
+      <h3>היסטוריית תורים</h3>
+      <ul *ngIf="history.length" class="appointment-list">
+        <li *ngFor="let item of history" class="appointment-item">
+          <div><strong>תור #{{ item.id }}</strong></div>
+          <div><strong>רופא:</strong> {{ item.workerId }}</div>
+          <div><strong>תאריך:</strong> {{ item.date }}</div>
+          <div><strong>טיפול:</strong> {{ item.treatmentDescription }}</div>
+        </li>
+      </ul>
+      <p *ngIf="!loadingHistory && !history.length">אין תורים במערכת.</p>
+    </div>
+  </section>
 </section>
