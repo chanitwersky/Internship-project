@@ -1,1 +1,43 @@
-<p>patient works!</p>
+<div class="appointment-container" dir="rtl">
+
+  <h2>פרטי תור</h2>
+
+  <div class="details">
+
+    <p><strong>מזהה עובד:</strong> {{ workerId }}</p>
+
+    <p><strong>מזהה לקוח:</strong> {{ customerId }}</p>
+
+    <p><strong>תאריך:</strong> {{ date }}</p>
+
+  </div>
+
+  <hr>
+
+  <div class="description-section">
+
+    <label for="desc">תיאור התור:</label>
+
+    <textarea
+      id="desc"
+      [(ngModel)]="description"
+      placeholder="הוסף תיאור כאן...">
+    </textarea>
+
+    <div class="buttons">
+
+      <button class="save-btn"
+              (click)="saveDescription()">
+        שמור תיאור
+      </button>
+
+      <button class="finish-btn"
+              (click)="finishAppointment()">
+        סיום טיפול
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
