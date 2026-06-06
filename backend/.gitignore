@@ -3,4 +3,5 @@
 /obj/
 *.mdf
 *.ldf
-/BI/obj
+*/BI/obj*
+BACKEND/BI/obj
