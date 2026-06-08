@@ -67,7 +67,7 @@ namespace _1_contrller.Controllers
         }
 
         [HttpGet("appointments/{appointmentId}")]
-        public async Task<ActionResult<Queue>> GetOppointmentByAppointmentId(string appointmentId)
+        public async Task<ActionResult<Queue>> GetOppointmentByAppointmentId(int appointmentId)
         {
             var result = await _BlDoctorS.GetAppointmentByAppointmentId(appointmentId);
             if (result == null )
@@ -91,7 +91,7 @@ namespace _1_contrller.Controllers
         //}
 
         [HttpPost("finish/{appointmentId}")]
-        public async Task<IActionResult> FinishAppointment(string appointmentId)
+        public async Task<IActionResult> FinishAppointment(int appointmentId)
         {
             try
             {

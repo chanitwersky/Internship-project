@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Dal.Api;
 
 namespace Dal.Services
 {
@@ -25,7 +26,7 @@ namespace Dal.Services
 
         public async Task<Customer?> GetPById(string pId)
         {
-            Customer customer = await _context.Customers.FirstOrDefaultAsync(s => s.WorkerId == pId);
+            Customer customer = await _context.Customers.FirstOrDefaultAsync(s => s.CustomerId == pId);
             return customer;
         }
     }

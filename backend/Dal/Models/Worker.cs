@@ -5,6 +5,8 @@ namespace Dal.Models;
 
 public partial class Worker
 {
+    public string Password;
+
     public string WorkerId { get; set; } = null!;
 
     public string FirstName { get; set; } = null!;

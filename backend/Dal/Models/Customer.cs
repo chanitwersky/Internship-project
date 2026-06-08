@@ -5,6 +5,8 @@ namespace Dal.Models;
 
 public partial class Customer
 {
+    public string Password;
+
     public string CustomerId { get; set; } = null!;
 
     public string FirstName { get; set; } = null!;

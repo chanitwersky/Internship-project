@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Bl.Services
 {
-    internal class JwtService
+    public class JwtService
     {
         private readonly string _secretKey;
 

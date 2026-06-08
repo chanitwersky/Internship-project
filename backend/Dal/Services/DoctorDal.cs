@@ -52,9 +52,9 @@ namespace Dal.Services
 
         }
 
-        public async Task<Queue> GetAppointmentByAppointmentId(string appointmentId)
+        public async Task<Queue> GetAppointmentByAppointmentId(int appointmentId)
         {
-            Queue queue = await _context.Queues.FirstOrDefaultAsync(s => s.id == appointmentId);
+            Queue queue = await _context.Queues.FirstOrDefaultAsync(s => s.Id == appointmentId);
             return queue;
         }
 
@@ -70,7 +70,7 @@ namespace Dal.Services
         //    return true;
         //}
 
-        public async Task FinishAppointment(string appointmentId)
+        public async Task FinishAppointment(int appointmentId)
         {
             var appointment = await _context.Queues
                 .FirstOrDefaultAsync(x => x.Id == appointmentId);
@@ -82,9 +82,9 @@ namespace Dal.Services
             var history = new QueueHistory
             {
                 Id = appointment.Id,
-                workerId = appointment.workerId,
-                customerId = appointment.customerId,
-                date = appointment.date,
+                WorkerId = appointment.WorkerId,
+                CustomerId = appointment.CustomerId,
+                Date = appointment.Date,
                 TreatmentDescription = appointment.TreatmentDescription
             };
 

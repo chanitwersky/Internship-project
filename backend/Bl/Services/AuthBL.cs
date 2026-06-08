@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Bl.Api;
+using Bl.Models;
+using Dal.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +26,7 @@ namespace Bl.Services
 
             if (doctor != null)
             {
-                if (doctor.password == password)
+                if (doctor.Password == password)
                 {
                     var token =
                         _jwtService.GenerateToken(
@@ -44,7 +47,7 @@ namespace Bl.Services
 
             if (patient != null)
             {
-                if (patient.password == password)
+                if (patient.Password == password)
                 {
                     var token =
                         _jwtService.GenerateToken(

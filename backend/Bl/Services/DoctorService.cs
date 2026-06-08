@@ -33,7 +33,7 @@ namespace Bl.Services
             await _DoctorService.UpdateAppointment(treatmentDescription,id);
         }
 
-        public async Task<Queue> GetAppointmentByAppointmentId(string appointmentId)
+        public async Task<Queue> GetAppointmentByAppointmentId(int appointmentId)
         {
             return await _DoctorService.GetAppointmentByAppointmentId(appointmentId);
         }
@@ -42,7 +42,7 @@ namespace Bl.Services
         //{
         //    return await _DoctorService.DeleteOppointmentByAppointmentId(appointmentId);
         //}
-        public async Task FinishAppointment(string appointmentId)
+        public async Task FinishAppointment(int appointmentId)
         {
             await _DoctorService.FinishAppointment(appointmentId);
         }
