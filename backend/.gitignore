@@ -1,0 +1,7 @@
+/.vs/
+/bin/
+/obj/
+*.mdf
+*.ldf
+*/BI/obj*
+BACKEND/BI/obj
