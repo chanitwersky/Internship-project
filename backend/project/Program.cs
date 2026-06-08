@@ -1,11 +1,19 @@
+using Bl.Services;
 using Dal.Models;
+using Dal.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<Datamanager>();
+builder.Services.AddDbContext<Datamanager>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<DoctorService>();
+builder.Services.AddScoped<DoctorDal>();
+builder.Services.AddScoped<CustomerService>();
+builder.Services.AddScoped<CustomerDal>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

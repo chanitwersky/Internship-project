@@ -14,26 +14,26 @@ namespace _1_contrller.Controllers
             _BlDoctorS = BlDoctorS;
         }
 
-        [HttpGet("{doctorId}")]
+        [HttpGet("patients/{doctorId}")]
         public async Task<ActionResult<List<Customer>>> GetAllpait(string doctorId)
         {
             var result = await _BlDoctorS.GetAllpait(doctorId);
 
             if (result == null || result.Count == 0)
             {
-                return NotFound("לא נמצאו פציינטים לרופא זה");
+                return NotFound("ÿÿ ÿÿÿÿÿ ÿÿÿÿÿÿÿÿ ÿÿÿÿÿ ÿÿ");
             }
 
             return Ok(result);
         }
 
-        [HttpGet("{doctorId}")]
+        [HttpGet("shifts/{doctorId}")]
         public async Task<ActionResult<List<Shift>>> GetShiftsByDoctorId(string doctorId)
         {
             var result = await _BlDoctorS.GetShiftsByDoctorId(doctorId);
             if (result == null || result.Count == 0)
             {
-                return NotFound("לא נמצאו משמרות לרופא זה");
+                return NotFound("ÿÿ ÿÿÿÿÿ ÿÿÿÿÿÿ ÿÿÿÿÿ ÿÿ");
             }
 
             return Ok(result);
@@ -57,7 +57,7 @@ namespace _1_contrller.Controllers
             {
                 return NotFound(ex.Message);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return StatusCode(500, "An error occurred while updating the appointment");
             }
@@ -70,7 +70,7 @@ namespace _1_contrller.Controllers
             var result = await _BlDoctorS.GetAppointmentByAppointmentId(appointmentId);
             if (result == null )
             {
-                return NotFound("התור לא נמצא");
+                return NotFound("ÿÿÿÿ ÿÿ ÿÿÿÿ");
             }
 
             return Ok(result);
@@ -82,10 +82,10 @@ namespace _1_contrller.Controllers
         //    var result = await _BlDoctorS.DeleteOppointmentByAppointmentId(appointmentId);
         //    if (!result)
         //    {
-        //        return NotFound("התור לא נמצא");
+        //        return NotFound("ÿÿÿÿ ÿÿ ÿÿÿÿ");
         //    }
 
-        //    return Ok("התור נמחק בהצלחה");
+        //    return Ok("ÿÿÿÿ ÿÿÿÿ ÿÿÿÿÿÿ");
         //}
 
         [HttpPost("finish/{appointmentId}")]
@@ -95,7 +95,7 @@ namespace _1_contrller.Controllers
             {
                 await _BlDoctorS.FinishAppointment(appointmentId);
 
-                return Ok(new { message = "הטיפול הסתיים בהצלחה" });
+                return Ok(new { message = "ÿÿÿÿÿÿ ÿÿÿÿÿÿ ÿÿÿÿÿÿ" });
             }
             catch (Exception ex)
             {
