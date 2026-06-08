@@ -1,1 +1,17 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+  <input
+    type="text"
+    formControlName="id"
+    placeholder="מספר זהות">
+
+  <input
+    type="password"
+    formControlName="password"
+    placeholder="סיסמה">
+
+  <button type="submit">
+    התחבר
+  </button>
+
+</form>
