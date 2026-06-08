@@ -7,5 +7,9 @@ yarn-error.log*
 dist/
 build/
 coverage/
+**/bin/
+**/obj/
+*.user
+*.suo
 
 

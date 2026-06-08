@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 import { Appointment } from '../../../services/oppointment/appointment';
 import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-patient',
-  imports: [],
+  imports: [
+    CommonModule,
+    FormsModule],
   templateUrl: './patient.html',
   styleUrl: './patient.css',
 })
