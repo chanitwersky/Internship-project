@@ -2,19 +2,24 @@ using Dal.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Bl.Services;
+using Dal.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddControllers();
-builder.Services.AddDbContext<Datamanager>();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 // 🔐 JWT KEY from appsettings.json
 var jwtKey = builder.Configuration["Jwt:Key"]
     ?? throw new Exception("Missing Jwt Key in appsettings.json");
+// Add services to the container.
+builder.Services.AddControllers();
+builder.Services.AddDbContext<Datamanager>();
+builder.Services.AddScoped<AuthBL>();
+builder.Services.AddScoped<AuthDal>();
+builder.Services.AddScoped<JwtService>(sp =>
+    new JwtService(jwtKey));
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 // 🔐 Authentication (JWT)
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
