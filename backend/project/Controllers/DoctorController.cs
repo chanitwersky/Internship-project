@@ -14,7 +14,7 @@ namespace _1_contrller.Controllers
             _BlDoctorS = BlDoctorS;
         }
 
-        [HttpGet("{doctorId}")]
+        [HttpGet("patients/{doctorId}")]
         public async Task<ActionResult<List<Customer>>> GetAllpait(string doctorId)
         {
             var result = await _BlDoctorS.GetAllpait(doctorId);
@@ -27,7 +27,7 @@ namespace _1_contrller.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{doctorId}")]
+        [HttpGet("shifts/{doctorId}")]
         public async Task<ActionResult<List<Shift>>> GetShiftsByDoctorId(string doctorId)
         {
             var result = await _BlDoctorS.GetShiftsByDoctorId(doctorId);
@@ -57,7 +57,7 @@ namespace _1_contrller.Controllers
             {
                 return NotFound(ex.Message);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return StatusCode(500, "An error occurred while updating the appointment");
             }

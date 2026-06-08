@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Bl.Services;
 using Dal.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace project.Controllers
 {
@@ -12,31 +8,21 @@ namespace project.Controllers
     [Route("api/[controller]")]
     public class CustomerController : ControllerBase
     {
-        private readonly Datamanager _context;
+        private readonly CustomerService _customerService;
 
-        public CustomerController(Datamanager context)
+        public CustomerController(CustomerService customerService)
         {
-            _context = context;
+            _customerService = customerService;
         }
 
-        [HttpGet("appointments/{customerId}")]
-        [HttpGet("getbyid/appointments/{customerId}")]
-        public async Task<ActionResult<IEnumerable<object>>> GetCustomerAppointments(string customerId)
+        [HttpGet("~/api/appointments/client/{clientId}")]
+        [HttpGet("appointments/{clientId}")]
+        [HttpGet("getbyid/appointments/{clientId}")]
+        public async Task<ActionResult<List<Queue>>> GetCustomerAppointments(string clientId)
         {
-            var appointments = await _context.Queues
-                .AsNoTracking()
-                .Where(q => q.CustomerId == customerId)
-                .Select(q => new
-                {
-                    q.Id,
-                    q.WorkerId,
-                    q.CustomerId,
-                    q.TreatmentDescription,
-                    q.Date
-                })
-                .ToListAsync();
+            var appointments = await _customerService.GetAppointments(clientId);
 
-            if (!appointments.Any())
+            if (appointments.Count == 0)
             {
                 return NotFound(new { Message = "No upcoming appointments found for this customer." });
             }
@@ -44,24 +30,14 @@ namespace project.Controllers
             return Ok(appointments);
         }
 
-        [HttpGet("history/{customerId}")]
-        [HttpGet("getbyid/history/{customerId}")]
-        public async Task<ActionResult<IEnumerable<object>>> GetCustomerHistory(string customerId)
+        [HttpGet("~/api/history/client/{clientId}")]
+        [HttpGet("history/{clientId}")]
+        [HttpGet("getbyid/history/{clientId}")]
+        public async Task<ActionResult<List<QueueHistory>>> GetCustomerHistory(string clientId)
         {
-            var history = await _context.QueueHistories
-                .AsNoTracking()
-                .Where(q => q.CustomerId == customerId)
-                .Select(q => new
-                {
-                    q.Id,
-                    q.WorkerId,
-                    q.CustomerId,
-                    q.TreatmentDescription,
-                    q.Date
-                })
-                .ToListAsync();
+            var history = await _customerService.GetHistory(clientId);
 
-            if (!history.Any())
+            if (history.Count == 0)
             {
                 return NotFound(new { Message = "No appointment history found for this customer." });
             }
@@ -69,23 +45,11 @@ namespace project.Controllers
             return Ok(history);
         }
 
-        [HttpGet("{customerId}")]
-        public async Task<ActionResult<object>> GetCustomerDetails(string customerId)
+        [HttpGet("~/api/clients/{clientId}")]
+        [HttpGet("{clientId}")]
+        public async Task<ActionResult<Customer>> GetCustomerDetails(string clientId)
         {
-            var customer = await _context.Customers
-                .AsNoTracking()
-                .Where(c => c.CustomerId == customerId)
-                .Select(c => new
-                {
-                    c.CustomerId,
-                    c.FirstName,
-                    c.LastName,
-                    c.Phone,
-                    c.Adress,
-                    c.Email,
-                    c.LastVisit
-                })
-                .FirstOrDefaultAsync();
+            var customer = await _customerService.GetCustomerDetails(clientId);
 
             if (customer == null)
             {
@@ -95,74 +59,145 @@ namespace project.Controllers
             return Ok(customer);
         }
 
-        [HttpPut("appointments/{customerId}/{appointmentId}")]
-        public async Task<IActionResult> PutAppointment(string customerId, int appointmentId, [FromBody] UpdateAppointmentDto appointmentDto)
+        [HttpPost("appointments/{customerId}")]
+        public async Task<ActionResult<Queue>> PostAppointment(string customerId, [FromBody] UpdateAppointmentDto appointmentDto)
         {
             if (appointmentDto == null)
             {
                 return BadRequest(new { Message = "Appointment data is required." });
             }
 
-            var appointment = await _context.Queues.FindAsync(appointmentId);
-            if (appointment == null)
+            try
             {
-                appointment = new Queue
+                var appointment = new Queue
                 {
-                    Id = appointmentId,
+                    WorkerId = appointmentDto.WorkerId,
                     CustomerId = customerId,
+                    TreatmentDescription = appointmentDto.TreatmentDescription,
+                    Date = appointmentDto.Date
+                };
+
+                var createdAppointment = await _customerService.CreateAppointment(customerId, appointment);
+                return Ok(createdAppointment);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new { Message = "An error occurred while creating the appointment." });
+            }
+        }
+
+        [HttpPut("~/api/appointments/update/{id}")]
+        [HttpPut("appointments/{customerId}/{id}")]
+        public async Task<IActionResult> PutAppointment(int id, [FromBody] UpdateAppointmentDto appointmentDto, string? customerId = null)
+        {
+            if (appointmentDto == null || string.IsNullOrWhiteSpace(appointmentDto.CustomerId ?? customerId))
+            {
+                return BadRequest(new { Message = "Appointment data is required." });
+            }
+
+            try
+            {
+                var clientId = appointmentDto.CustomerId ?? customerId!;
+                var appointment = new Queue
+                {
+                    Id = id,
+                    CustomerId = clientId,
                     WorkerId = appointmentDto.WorkerId,
                     TreatmentDescription = appointmentDto.TreatmentDescription,
                     Date = appointmentDto.Date
                 };
 
-                _context.Queues.Add(appointment);
-            }
-            else
-            {
-                if (!string.Equals(appointment.CustomerId, customerId, StringComparison.OrdinalIgnoreCase))
+                var isUpdated = await _customerService.UpdateAppointment(clientId, id, appointment);
+
+                if (!isUpdated)
                 {
-                    return BadRequest(new { Message = "Appointment does not belong to the specified customer." });
+                    return NotFound(new { Message = "Appointment not found for this customer." });
                 }
 
-                appointment.WorkerId = appointmentDto.WorkerId;
-                appointment.TreatmentDescription = appointmentDto.TreatmentDescription;
-                appointment.Date = appointmentDto.Date;
-                _context.Queues.Update(appointment);
+                return NoContent();
             }
-
-            await _context.SaveChangesAsync();
-            return NoContent();
+            catch (Exception)
+            {
+                return StatusCode(500, new { Message = "An error occurred while updating the appointment." });
+            }
         }
 
-        [HttpPut("settings/{customerId}")]
-        public async Task<IActionResult> PutCustomerSettings(string customerId, [FromBody] UpdateCustomerSettingsDto settingsDto)
+        [HttpPut("~/api/clients/{id}")]
+        [HttpPut("settings/{id}")]
+        public async Task<IActionResult> PutCustomerSettings(string id, [FromBody] UpdateCustomerSettingsDto settingsDto)
         {
             if (settingsDto == null)
             {
                 return BadRequest(new { Message = "Customer settings data is required." });
             }
 
-            var customer = await _context.Customers.FindAsync(customerId);
-            if (customer == null)
+            var currentCustomer = await _customerService.GetCustomerDetails(id);
+
+            if (currentCustomer == null)
             {
                 return NotFound(new { Message = "Customer not found." });
             }
 
-            customer.FirstName = settingsDto.FirstName ?? customer.FirstName;
-            customer.LastName = settingsDto.LastName ?? customer.LastName;
-            customer.Phone = settingsDto.Phone ?? customer.Phone;
-            customer.Adress = settingsDto.Adress ?? customer.Adress;
-            customer.Email = settingsDto.Email ?? customer.Email;
-            customer.LastVisit = settingsDto.LastVisit ?? customer.LastVisit;
+            try
+            {
+                var customer = new Customer
+                {
+                    CustomerId = id,
+                    FirstName = settingsDto.FirstName ?? currentCustomer.FirstName,
+                    LastName = settingsDto.LastName ?? currentCustomer.LastName,
+                    Phone = settingsDto.Phone ?? currentCustomer.Phone,
+                    Adress = settingsDto.Adress ?? currentCustomer.Adress,
+                    Email = settingsDto.Email ?? currentCustomer.Email,
+                    LastVisit = settingsDto.LastVisit ?? currentCustomer.LastVisit
+                };
 
-            _context.Customers.Update(customer);
-            await _context.SaveChangesAsync();
+                await _customerService.UpdateCustomerSettings(id, customer);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new { Message = "An error occurred while updating customer settings." });
+            }
+        }
+
+        [HttpPost("~/api/appointments/complete")]
+        [HttpPost("appointments/{customerId}/{appointmentId}/complete")]
+        public async Task<IActionResult> CompleteAppointment([FromBody] CompleteAppointmentDto appointmentDto, string? customerId = null, int? appointmentId = null)
+        {
+            if (appointmentDto == null
+                || string.IsNullOrWhiteSpace(appointmentDto.CustomerId ?? customerId)
+                || appointmentDto.AppointmentId.GetValueOrDefault(appointmentId ?? 0) == 0
+                || string.IsNullOrWhiteSpace(appointmentDto.TreatmentDescription))
+            {
+                return BadRequest(new { Message = "Appointment id, customer id and treatment description are required." });
+            }
+
+            try
+            {
+                var clientId = appointmentDto.CustomerId ?? customerId!;
+                var queueId = appointmentDto.AppointmentId ?? appointmentId!.Value;
+                var isCompleted = await _customerService.CompleteAppointment(
+                    clientId,
+                    queueId,
+                    appointmentDto.TreatmentDescription);
+
+                if (!isCompleted)
+                {
+                    return NotFound(new { Message = "Appointment not found for this customer." });
+                }
+
+                return Ok(new { Message = "Appointment completed and moved to history." });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new { Message = "An error occurred while completing the appointment." });
+            }
         }
 
         public class UpdateAppointmentDto
         {
+            public string? CustomerId { get; set; }
             public string WorkerId { get; set; } = null!;
             public string TreatmentDescription { get; set; } = null!;
             public DateTime Date { get; set; }
@@ -176,6 +211,13 @@ namespace project.Controllers
             public string? Adress { get; set; }
             public string? Email { get; set; }
             public DateTime? LastVisit { get; set; }
+        }
+
+        public class CompleteAppointmentDto
+        {
+            public int? AppointmentId { get; set; }
+            public string? CustomerId { get; set; }
+            public string TreatmentDescription { get; set; } = null!;
         }
     }
 }

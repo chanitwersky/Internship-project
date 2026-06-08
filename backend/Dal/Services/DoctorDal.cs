@@ -37,7 +37,7 @@ namespace Dal.Services
         {
             try
             {
-                var appointment = await _context.Queues.FindAsync(id);
+                var appointment = await _context.Queues.FindAsync(int.Parse(id));
                 if (appointment == null)
                 {
                     throw new KeyNotFoundException($"Appointment with ID {id} not found.");
@@ -52,9 +52,9 @@ namespace Dal.Services
 
         }
 
-        public async Task<Queue> GetAppointmentByAppointmentId(string appointmentId)
+        public async Task<Queue?> GetAppointmentByAppointmentId(string appointmentId)
         {
-            Queue queue = await _context.Queues.FirstOrDefaultAsync(s => s.id == appointmentId);
+            var queue = await _context.Queues.FirstOrDefaultAsync(s => s.Id == int.Parse(appointmentId));
             return queue;
         }
 
@@ -72,8 +72,9 @@ namespace Dal.Services
 
         public async Task FinishAppointment(string appointmentId)
         {
+            var id = int.Parse(appointmentId);
             var appointment = await _context.Queues
-                .FirstOrDefaultAsync(x => x.Id == appointmentId);
+                .FirstOrDefaultAsync(x => x.Id == id);
 
             if (appointment == null)
                 throw new Exception("Appointment not found");
@@ -82,9 +83,9 @@ namespace Dal.Services
             var history = new QueueHistory
             {
                 Id = appointment.Id,
-                workerId = appointment.workerId,
-                customerId = appointment.customerId,
-                date = appointment.date,
+                WorkerId = appointment.WorkerId,
+                CustomerId = appointment.CustomerId,
+                Date = appointment.Date,
                 TreatmentDescription = appointment.TreatmentDescription
             };
 

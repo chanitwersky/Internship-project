@@ -5,6 +5,8 @@ dist/
 tmp/
 out-tsc/
 bazel-out/
+coverage/
+build/
 
 # IDE / OS
 .vscode/
@@ -21,12 +23,18 @@ bazel-out/
 .vs/
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
 
-# Logs
+# Logs and temporary files
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.tmp
+*.temp
+~$*
 
-# Lock files (optional – uncomment if you do not want to track lock files)
-# *.lock
+# Database files
+*.mdf
+*.ldf
