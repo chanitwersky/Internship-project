@@ -1,0 +1,18 @@
+.angular/cache/
+
+# Dependencies
+/node_modules
+
+# Build results
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# IDE/Editor settings (אופציונלי אבל מומלץ)
+.vscode/
+.idea/
+.DS_Store
+
+# Environment variables (חשוב מאוד!)
+.env
