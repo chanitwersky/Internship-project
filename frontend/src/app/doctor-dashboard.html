@@ -1,0 +1,75 @@
+<section class="page-shell">
+  <div class="header">
+    <div>
+      <h2>לוח רופאים</h2>
+      <p>תצוגת תורים להיום ולוח המשמרות השבועי של הרופא.</p>
+    </div>
+    <div class="button-row">
+      <button type="button" class="primary" (click)="goToMyPatients()">הלקוחות שלי</button>
+      <button type="button" class="secondary" (click)="toggleExpand()">
+        {{ expanded ? 'הסתר לוח שבועי' : 'הרחב לוח שבועי' }}
+      </button>
+    </div>
+  </div>
+
+  <p *ngIf="error" class="message error">{{ error }}</p>
+
+  <div class="loader-row" *ngIf="loadingAppointments || loadingSchedule">
+    <span *ngIf="loadingAppointments">טוען תורים...</span>
+    <span *ngIf="loadingSchedule">טוען לוח שבועי...</span>
+  </div>
+
+  <div class="tables-row">
+    <div class="card table-card">
+      <h3>תורים להיום</h3>
+      <ul *ngIf="appointments.length; else noAppointments" class="appointment-list">
+        <li *ngFor="let appointment of appointments; trackBy: trackByAppointment" class="appointment-item">
+          <div class="appointment-top">
+            <div class="appointment-title">תור #{{ appointment.id }}</div>
+            <button type="button" class="secondary" (click)="goToAppointmentFill(appointment.id)">
+              למילוי תור
+            </button>
+          </div>
+          <div><strong>לקוח:</strong> {{ appointment.customerId }}</div>
+          <div><strong>תאריך:</strong> {{ appointment.date | date : 'yyyy-MM-dd HH:mm' }}</div>
+          <div><strong>טיפול:</strong> {{ appointment.treatmentDescription }}</div>
+        </li>
+      </ul>
+
+      <ng-template #noAppointments>
+        <p *ngIf="!loadingAppointments">אין תורים להיום.</p>
+      </ng-template>
+    </div>
+
+    <div class="card table-card schedule-card">
+      <h3>לוח שבועי</h3>
+
+      <table class="schedule-table" *ngIf="schedule.length; else noSchedule">
+        <thead>
+          <tr>
+            <th>יום</th>
+            <th>תחילת משמרת</th>
+            <th>סיום משמרת</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let shift of schedule | slice : 0 : (expanded ? schedule.length : 5)">
+            <td>{{ shift.day }}</td>
+            <td>{{ shift.checkInTime }}</td>
+            <td>{{ shift.endTime }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ng-template #noSchedule>
+        <p *ngIf="!loadingSchedule">לא נמצא לוח שבועי.</p>
+      </ng-template>
+
+      <div class="schedule-footer" *ngIf="schedule.length">
+        <button type="button" class="secondary" (click)="toggleExpand()">
+          {{ expanded ? 'הצג פחות' : 'הצג את כל השבוע' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

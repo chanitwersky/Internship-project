@@ -1,0 +1,129 @@
+.page-shell {
+  padding: 18px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.header h2 {
+  margin: 0 0 6px;
+}
+
+.header p {
+  margin: 0;
+  color: #555;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.loader-row {
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.message.error {
+  color: #a94442;
+  background: #f2dede;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+.tables-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 18px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.table-card {
+  min-height: 260px;
+}
+
+.appointment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.appointment-item {
+  border-bottom: 1px solid #ececec;
+  padding: 12px 0;
+}
+
+.appointment-item:last-child {
+  border-bottom: none;
+}
+
+.appointment-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.appointment-title {
+  font-weight: 600;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.schedule-table th,
+.schedule-table td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid #ececec;
+}
+
+.schedule-footer {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.primary,
+.secondary {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.primary {
+  background: #1b6ce7;
+  color: #fff;
+}
+
+.secondary {
+  background: #f4f6fb;
+  color: #1e2a3a;
+}
+
+@media (max-width: 900px) {
+  .tables-row {
+    grid-template-columns: 1fr;
+  }
+}
