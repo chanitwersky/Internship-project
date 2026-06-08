@@ -11,7 +11,7 @@ namespace Bl.Api
     {
         Task<List<Customer>> GetAllpait(string doctorId);
         Task<List<Shift>> GetShiftsByDoctorId(string doctorId);
-        Task UpdateAppointment(string treatmentDescription, string id);
+        Task UpdateAppointment(string treatmentDescription, int id);
         Task<Queue> GetAppointmentByAppointmentId(int appointmentId);
         //Task<bool> DeleteOppointmentByAppointmentId(string appointmentId)
         Task FinishAppointment(int appointmentId);

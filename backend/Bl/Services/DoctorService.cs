@@ -28,7 +28,7 @@ namespace Bl.Services
             return await _DoctorService.GetShiftsByDoctorId(doctorId);
         }
 
-        public async Task UpdateAppointment(string treatmentDescription, string id)
+        public async Task UpdateAppointment(string treatmentDescription, int id)
         {
             await _DoctorService.UpdateAppointment(treatmentDescription,id);
         }

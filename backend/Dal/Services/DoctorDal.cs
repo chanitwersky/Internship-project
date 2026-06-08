@@ -33,7 +33,7 @@ namespace Dal.Services
             return shifts;
         }
 
-        public async Task UpdateAppointment(string treatmentDescription,string id)
+        public async Task UpdateAppointment(string treatmentDescription,int id)
         {
             try
             {

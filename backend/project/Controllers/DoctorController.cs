@@ -10,7 +10,8 @@ namespace _1_contrller.Controllers
     [Route("api/[controller]")]
     public class DoctorController : ControllerBase
     {
-        private DoctorService _BlDoctorS;
+        private readonly DoctorService _BlDoctorS;
+
         public DoctorController(DoctorService BlDoctorS)
         {
             _BlDoctorS = BlDoctorS;
@@ -23,7 +24,7 @@ namespace _1_contrller.Controllers
 
             if (result == null || result.Count == 0)
             {
-                return NotFound("ма роцае фцййрийн мшефа жд");
+                return NotFound("ЧњЧђ Ч ЧћЧ¦ЧђЧ• ЧћЧЧ•Ч¤ЧњЧ™Чќ ЧњЧЁЧ•Ч¤Чђ Ч–Ч”");
             }
 
             return Ok(result);
@@ -33,16 +34,17 @@ namespace _1_contrller.Controllers
         public async Task<ActionResult<List<Shift>>> GetShiftsByDoctorId(string doctorId)
         {
             var result = await _BlDoctorS.GetShiftsByDoctorId(doctorId);
+
             if (result == null || result.Count == 0)
             {
-                return NotFound("ма роцае ощошеъ мшефа жд");
+                return NotFound("ЧњЧђ Ч ЧћЧ¦ЧђЧ• ЧћЧ©ЧћЧЁЧ•ЧЄ ЧњЧЁЧ•Ч¤Чђ Ч–Ч”");
             }
 
             return Ok(result);
         }
 
         [HttpPatch("update-description/{id}")]
-        public async Task<IActionResult> putDescription(string id, [FromBody] string description)
+        public async Task<IActionResult> PutDescription(int id, [FromBody] string description)
         {
             if (string.IsNullOrEmpty(description))
             {
@@ -53,42 +55,30 @@ namespace _1_contrller.Controllers
             {
                 await _BlDoctorS.UpdateAppointment(description, id);
 
-                return Ok(new { message = "Appointment description updated successfully" });
+                return Ok(new { message = "ЧЄЧ™ЧђЧ•ЧЁ Ч”ЧЄЧ•ЧЁ ЧўЧ•Ч“Ч›Чџ Ч‘Ч”Ч¦ЧњЧ—Ч”" });
             }
             catch (KeyNotFoundException ex)
             {
                 return NotFound(ex.Message);
             }
-            catch (Exception e)
+            catch
             {
-                return StatusCode(500, "An error occurred while updating the appointment");
+                return StatusCode(500, "ЧђЧ™ЧЁЧўЧ” Ч©Ч’Ч™ЧђЧ” Ч‘ЧўЧЄ ЧўЧ“Ч›Ч•Чџ Ч”ЧЄЧ•ЧЁ");
             }
-
         }
 
         [HttpGet("appointments/{appointmentId}")]
         public async Task<ActionResult<Queue>> GetOppointmentByAppointmentId(int appointmentId)
         {
             var result = await _BlDoctorS.GetAppointmentByAppointmentId(appointmentId);
-            if (result == null )
+
+            if (result == null)
             {
-                return NotFound("дъеш ма роца");
+                return NotFound("Ч”ЧЄЧ•ЧЁ ЧњЧђ Ч ЧћЧ¦Чђ");
             }
 
             return Ok(result);
         }
-
-        //[HttpDelete("appointments/{appointmentId}")]
-        //public async Task<ActionResult<bool>> DeleteOppointmentByAppointmentId(string appointmentId)
-        //{
-        //    var result = await _BlDoctorS.DeleteOppointmentByAppointmentId(appointmentId);
-        //    if (!result)
-        //    {
-        //        return NotFound("дъеш ма роца");
-        //    }
-
-        //    return Ok("дъеш розч бдцмзд");
-        //}
 
         [HttpPost("finish/{appointmentId}")]
         public async Task<IActionResult> FinishAppointment(int appointmentId)
@@ -97,14 +87,12 @@ namespace _1_contrller.Controllers
             {
                 await _BlDoctorS.FinishAppointment(appointmentId);
 
-                return Ok(new { message = "дийфем дсъййн бдцмзд" });
+                return Ok(new { message = "Ч”ЧЧ™Ч¤Ч•Чњ Ч”ЧЎЧЄЧ™Ч™Чќ Ч‘Ч”Ч¦ЧњЧ—Ч”" });
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
         }
-
-
     }
 }
