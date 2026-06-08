@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bl.Api
 {
-    internal interface AuthBLApi
+    internal interface IAuthBL
     {
     }
 }
