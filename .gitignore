@@ -1,18 +1,32 @@
-.angular/cache/
+# Angular / Node
+node_modules/
+.angular/
+dist/
+tmp/
+out-tsc/
+bazel-out/
 
-# Dependencies
-/node_modules
-
-# Build results
-/dist
-/tmp
-/out-tsc
-/bazel-out
-
-# IDE/Editor settings (אופציונלי אבל מומלץ)
+# IDE / OS
 .vscode/
 .idea/
 .DS_Store
 
-# Environment variables (חשוב מאוד!)
+# Environment
 .env
+.env.*
+
+# .NET build output
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Lock files (optional – uncomment if you do not want to track lock files)
+# *.lock
