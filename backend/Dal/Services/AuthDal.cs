@@ -26,7 +26,7 @@ namespace Dal.Services
 
         public async Task<Customer?> GetPById(string pId)
         {
-            Customer customer = await _context.Customers.FirstOrDefaultAsync(s => s.CostumerId == pId);
+            Customer customer = await _context.Customers.FirstOrDefaultAsync(s => s.CustomerId == pId);
             return customer;
         }
     }

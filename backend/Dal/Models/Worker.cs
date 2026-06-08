@@ -21,8 +21,6 @@ public partial class Worker
 
     public string Specialization { get; set; } = null!;
 
-    public string Password { get; set; } = null!;
-
     public virtual ICollection<QueueHistory> QueueHistories { get; set; } = new List<QueueHistory>();
 
     public virtual ICollection<Queue> Queues { get; set; } = new List<Queue>();
