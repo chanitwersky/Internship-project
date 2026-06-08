@@ -23,7 +23,7 @@ namespace Bl.Services
 
             if (doctor != null)
             {
-                if (doctor.password == password)
+                if (doctor.Password == password)
                 {
                     var token =
                         _jwtService.GenerateToken(
@@ -44,7 +44,7 @@ namespace Bl.Services
 
             if (patient != null)
             {
-                if (patient.password == password)
+                if (patient.Password == password)
                 {
                     var token =
                         _jwtService.GenerateToken(

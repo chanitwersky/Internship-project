@@ -19,6 +19,8 @@ public partial class Customer
 
     public string Email { get; set; } = null!;
 
+    public string Password { get; set; } = null!;
+
     public virtual ICollection<QueueHistory> QueueHistories { get; set; } = new List<QueueHistory>();
 
     public virtual ICollection<Queue> Queues { get; set; } = new List<Queue>();
