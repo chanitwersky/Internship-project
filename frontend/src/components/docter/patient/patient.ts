@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './patient.css',
 })
 export class Patient {
-  appointmentId: string = '';
+  appointmentId: number = 0;
   workerId: string = '';
   customerId: string = '';
   description: string = '';
