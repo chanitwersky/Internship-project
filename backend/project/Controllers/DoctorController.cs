@@ -1,11 +1,13 @@
 using Bl.Services;
 using Dal.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _1_contrller.Controllers
 {
+    [Authorize(Policy = "DoctorOnly")]
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("api/[controller]")]
     public class DoctorController : ControllerBase
     {
         private DoctorService _BlDoctorS;
@@ -14,7 +16,7 @@ namespace _1_contrller.Controllers
             _BlDoctorS = BlDoctorS;
         }
 
-        [HttpGet("{doctorId}")]
+        [HttpGet("{doctorId}/patients")]
         public async Task<ActionResult<List<Customer>>> GetAllpait(string doctorId)
         {
             var result = await _BlDoctorS.GetAllpait(doctorId);
@@ -27,7 +29,7 @@ namespace _1_contrller.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{doctorId}")]
+        [HttpGet("{doctorId}/shifts")]
         public async Task<ActionResult<List<Shift>>> GetShiftsByDoctorId(string doctorId)
         {
             var result = await _BlDoctorS.GetShiftsByDoctorId(doctorId);
