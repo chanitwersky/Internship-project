@@ -21,6 +21,7 @@ export class CustomerAppointmentsComponent {
   loadingAppointments = false;
   loadingHistory = false;
   loadingDetails = false;
+  completingAppointmentId: number | null = null;
   error: string | null = null;
   status: string | null = null;
   currentCustomerId = '';
@@ -68,8 +69,13 @@ export class CustomerAppointmentsComponent {
         this.clearAppointmentForm();
         this.loadingAppointments = false;
       },
-      error: () => {
-        this.error = 'נכשל בטעינת תורים. וודא שהשרת פועל.';
+      error: (err) => {
+        this.appointments = [];
+        this.selectedAppointment = null;
+        this.clearAppointmentForm();
+        if (err.status !== 404) {
+          this.error = 'נכשל בטעינת תורים. וודא שהשרת פועל.';
+        }
         this.loadingAppointments = false;
       },
     });
@@ -80,8 +86,11 @@ export class CustomerAppointmentsComponent {
         this.history = data;
         this.loadingHistory = false;
       },
-      error: () => {
-        this.error = 'נכשל בטעינת היסטוריה. וודא שהשרת פועל.';
+      error: (err) => {
+        this.history = [];
+        if (err.status !== 404) {
+          this.error = 'נכשל בטעינת היסטוריה. וודא שהשרת פועל.';
+        }
         this.loadingHistory = false;
       },
     });
@@ -118,7 +127,6 @@ export class CustomerAppointmentsComponent {
       return;
     }
 
-    const nextId = this.getNextAppointmentId();
     const request: UpdateAppointmentRequest = {
       workerId: this.createWorkerId.trim(),
       treatmentDescription: this.createDescription.trim(),
@@ -126,10 +134,10 @@ export class CustomerAppointmentsComponent {
     };
 
     this.customerService
-      .updateAppointment(this.currentCustomerId, nextId, request)
+      .createAppointment(this.currentCustomerId, request)
       .subscribe({
-        next: () => {
-          this.status = `תור חדש נוצר בהצלחה (מספר ${nextId}).`;
+        next: (createdAppointment) => {
+          this.status = `תור חדש נוצר בהצלחה (מספר ${createdAppointment.id}).`;
           this.clearCreateForm();
           this.loadData(this.currentCustomerId);
         },
@@ -137,14 +145,6 @@ export class CustomerAppointmentsComponent {
           this.error = 'נכשל ביצירת התור. וודא שהשרת פועל.';
         },
       });
-  }
-
-  private getNextAppointmentId(): number {
-    if (!this.appointments || !this.appointments.length) {
-      return 1;
-    }
-
-    return Math.max(...this.appointments.map((item) => item.id)) + 1;
   }
 
   private clearCreateForm(): void {
@@ -208,6 +208,35 @@ export class CustomerAppointmentsComponent {
     this.clearAppointmentForm();
     this.status = 'בחירת התור בוטלה.';
     this.error = null;
+  }
+
+  completeAppointment(item: CustomerAppointment): void {
+    this.error = null;
+    this.status = null;
+
+    if (!this.currentCustomerId) {
+      this.error = 'טען תחילה תעודת זהות של לקוח.';
+      return;
+    }
+
+    this.completingAppointmentId = item.id;
+    this.customerService
+      .completeAppointment({
+        appointmentId: item.id,
+        customerId: this.currentCustomerId,
+        treatmentDescription: item.treatmentDescription,
+      })
+      .subscribe({
+        next: () => {
+          this.status = `תור מספר ${item.id} הועבר להיסטוריה.`;
+          this.completingAppointmentId = null;
+          this.loadData(this.currentCustomerId);
+        },
+        error: () => {
+          this.error = 'נכשל בסיום התור. וודא שהשרת פועל.';
+          this.completingAppointmentId = null;
+        },
+      });
   }
 
   private formatDateForInput(dateValue: string): string {

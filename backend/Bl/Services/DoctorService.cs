@@ -33,7 +33,7 @@ namespace Bl.Services
             await _DoctorService.UpdateAppointment(treatmentDescription,id);
         }
 
-        public async Task<Queue> GetAppointmentByAppointmentId(string appointmentId)
+        public async Task<Queue?> GetAppointmentByAppointmentId(string appointmentId)
         {
             return await _DoctorService.GetAppointmentByAppointmentId(appointmentId);
         }

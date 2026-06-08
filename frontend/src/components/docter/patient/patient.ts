@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Appointment } from '../../../services/oppointment/appointment';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-patient',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './patient.html',
   styleUrl: './patient.css',
 })

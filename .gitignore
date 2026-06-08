@@ -1,0 +1,40 @@
+# Angular / Node
+node_modules/
+.angular/
+dist/
+tmp/
+out-tsc/
+bazel-out/
+coverage/
+build/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Environment
+.env
+.env.*
+
+# .NET build output
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs and temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.temp
+~$*
+
+# Database files
+*.mdf
+*.ldf

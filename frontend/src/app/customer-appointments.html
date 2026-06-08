@@ -115,7 +115,17 @@
         <li *ngFor="let item of appointments" class="appointment-item">
           <div class="appointment-top">
             <div class="appointment-title">תור #{{ item.id }}</div>
-            <button type="button" class="secondary" (click)="selectAppointment(item)">בחר לעריכה</button>
+            <div class="button-row compact">
+              <button type="button" class="secondary" (click)="selectAppointment(item)">בחר לעריכה</button>
+              <button
+                type="button"
+                class="primary"
+                [disabled]="completingAppointmentId === item.id"
+                (click)="completeAppointment(item)"
+              >
+                {{ completingAppointmentId === item.id ? 'מסיים...' : 'מלא טופס וסיים' }}
+              </button>
+            </div>
           </div>
           <div><strong>רופא:</strong> {{ item.workerId }}</div>
           <div><strong>תאריך:</strong> {{ item.date }}</div>
