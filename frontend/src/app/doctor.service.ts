@@ -17,6 +17,15 @@ export interface WeeklyShift {
   endTime: string;
 }
 
+export interface DoctorPatient {
+  customerId: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  lastVisit: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -31,5 +40,9 @@ export class DoctorService {
 
   getWeeklySchedule(doctorId: string): Observable<WeeklyShift[]> {
     return this.http.get<WeeklyShift[]>(`${this.baseUrl}/${doctorId}/schedule/week`);
+  }
+
+  getPatients(doctorId: string): Observable<DoctorPatient[]> {
+    return this.http.get<DoctorPatient[]>(`${this.baseUrl}/${doctorId}/patients`);
   }
 }

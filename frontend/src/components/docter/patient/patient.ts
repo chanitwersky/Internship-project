@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Appointment } from '../../../services/oppointment/appointment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -20,11 +20,15 @@ export class Patient {
   description: string = '';
   date: string = '';
 
-  constructor(private appointmentService: Appointment, private route: ActivatedRoute) {}
+  constructor(
+    private appointmentService: Appointment,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.appointmentId = params['id'];
+      this.appointmentId = Number(params['id']);
       this.getAppointment();
     });
     
@@ -77,7 +81,7 @@ export class Patient {
     .subscribe({
 
       next: () => {
-        alert("התור הסתיים והועבר להיסטוריה");
+        this.router.navigate(['/doctor']);
       },
 
       error: (err: any) => {

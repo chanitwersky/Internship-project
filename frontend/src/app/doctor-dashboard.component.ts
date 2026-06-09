@@ -57,7 +57,7 @@ export class DoctorDashboardComponent implements OnInit {
   }
 
   goToAppointmentFill(appointmentId: number): void {
-    this.router.navigate(['/doctor/appointment-fill', appointmentId]);
+    this.router.navigate(['/doctor/patient', appointmentId]);
   }
 
   goToMyPatients(): void {

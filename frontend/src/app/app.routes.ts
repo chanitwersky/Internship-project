@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
 import { Login } from '../components/home/login/login';
-import { HomePage } from '../components/home/home-page/home-page';
+import { Patient } from '../components/docter/patient/patient';
 
 export const router: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // דף הבית מפנה ללוגין
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: Login },
-   { path: '', redirectTo: 'customer', pathMatch: 'full' },
   {
     path: 'customer',
     loadComponent: () => import('./customer-appointments.component').then((m) => m.CustomerAppointmentsComponent),
@@ -13,16 +12,17 @@ export const router: Routes = [
   {
     path: 'doctor',
     loadComponent: () => import('./doctor-dashboard.component').then((m) => m.DoctorDashboardComponent),
-    // TODO: add a doctor guard here once authentication is available
-    // canActivate: [DoctorAuthGuard],
   },
   {
-    path: 'doctor/appointment-fill/:id',
-    loadComponent: () => import('./appointment-fill.component').then((m) => m.AppointmentFillComponent),
+    path: 'doctor/patient/:id',
+    component: Patient,
   },
   {
     path: 'doctor/patients',
     loadComponent: () => import('./doctor-patients.component').then((m) => m.DoctorPatientsComponent),
   },
+  {
+    path: 'doctor/patient-history/:patientId',
+    loadComponent: () => import('./doctor-patient-history.component').then((m) => m.DoctorPatientHistoryComponent),
+  },
 ];
-

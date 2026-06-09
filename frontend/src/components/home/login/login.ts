@@ -31,10 +31,10 @@ export class Login {
     next: (res: any) => {
 
     if (res.userType === 'Doctor') {
-      this.router.navigate(['/doctor-home']);
+      this.router.navigate(['/doctor']);
     }
     else {
-      this.router.navigate(['/patient-home']);
+      this.router.navigate(['/customer']);
     }
   }
   });

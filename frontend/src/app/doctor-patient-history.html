@@ -1,0 +1,36 @@
+<section class="page-shell">
+
+  <div class="header">
+    <div>
+      <h2>היסטוריית טיפולים</h2>
+      <p>תעודת זהות מטופל: {{ patientId }}</p>
+    </div>
+    <div>
+      <button type="button" class="primary" (click)="goBack()">חזרה לרשימת מטופלים</button>
+    </div>
+  </div>
+
+  <p *ngIf="error" class="message error">{{ error }}</p>
+
+  <div class="loader-row" *ngIf="loading">
+    <span>טוען היסטוריה...</span>
+  </div>
+
+  <div class="card table-card" *ngIf="!loading">
+    <h3>תורים שהסתיימו</h3>
+
+    <ul *ngIf="history.length" class="appointment-list">
+      <li *ngFor="let item of history" class="appointment-item">
+        <div class="appointment-top">
+          <div class="appointment-title">תור #{{ item.id }}</div>
+        </div>
+        <div><strong>רופא:</strong> {{ item.workerId }}</div>
+        <div><strong>תאריך:</strong> {{ item.date }}</div>
+        <div><strong>טיפול:</strong> {{ item.treatmentDescription }}</div>
+      </li>
+    </ul>
+
+    <p *ngIf="!history.length">לא נמצאה היסטוריה עבור מטופל זה.</p>
+  </div>
+
+</section>

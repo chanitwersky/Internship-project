@@ -1,17 +1,44 @@
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+<div class="login-page">
 
-  <input
-    type="text"
-    formControlName="id"
-    placeholder="מספר זהות">
+  <div class="login-brand">
+    <div class="login-logo">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <!-- Stethoscope chest piece: outer ring -->
+        <circle cx="22" cy="26" r="9" stroke="white" stroke-width="2.8" fill="none"/>
+        <!-- Stethoscope chest piece: inner dot -->
+        <circle cx="22" cy="26" r="3.2" fill="white"/>
+        <!-- Tubing: rises from top of chest piece, curves left -->
+        <path
+          d="M22 17 C22 12 14 12 14 17 L14 10"
+          stroke="white"
+          stroke-width="2.8"
+          stroke-linecap="round"
+          fill="none"/>
+        <!-- Earpiece: small horizontal caps -->
+        <line x1="11" y1="10" x2="17" y2="10" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1 class="login-clinic-name">MediCare</h1>
+    <p class="login-subtitle">ברוכים הבאים לפורטל הדיגיטלי של הקליניקה</p>
+    <p class="login-tagline">פלטפורמה מאובטחת למטופלים ולצוות הרפואי — ניהול תורים ומידע קליני במקום אחד</p>
+  </div>
 
-  <input
-    type="password"
-    formControlName="password"
-    placeholder="סיסמה">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
 
-  <button type="submit">
-    התחבר
-  </button>
+    <input
+      type="text"
+      formControlName="id"
+      placeholder="מספר זהות">
 
-</form>
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="סיסמה">
+
+    <button type="submit">
+      התחבר
+    </button>
+
+  </form>
+
+</div>

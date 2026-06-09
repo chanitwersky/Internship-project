@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+/* ═══════════════════════════════════════════════════════════════
+   MediCare — Global Design System
+   Login page is the single visual source of truth.
+   Font: Heebo — designed for Hebrew + Latin.
+═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap');
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+  --p-600:  #006D75;
+  --p-500:  #00818A;
+  --p-400:  #00979F;
+  --p-100:  #E6F4F5;
+  --p-50:   #F0F9FA;
+
+  --a-500:  #E07B2A;
+  --a-600:  #C96820;
+
+  --n-900:  #1A2332;
+  --n-700:  #3D4F63;
+  --n-500:  #637587;
+  --n-300:  #A8B5C2;
+  --n-100:  #E8EDF2;
+  --n-50:   #F7F8FA;
+  --n-0:    #FFFFFF;
+
+  --ok-bg:   #EBF8F2;  --ok-text:  #1A6641;  --ok-bdr:  #9FDCC0;
+  --err-bg:  #FEF0EE;  --err-text: #B83230;  --err-bdr: #F5C2BF;
+  --warn-bg: #FEF8EC;  --warn-text:#92540A;  --warn-bdr:#F8D99A;
+
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+
+  --sh-xs: 0 1px 4px  rgba(0,78,85,.06);
+  --sh-sm: 0 2px 10px rgba(0,78,85,.08);
+  --sh-md: 0 6px 20px rgba(0,78,85,.10);
+  --sh-lg: 0 12px 40px rgba(0,78,85,.13);
+
+  --ease: 0.2s ease;
+  --page-wide: 1100px;
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Heebo', 'Arial Hebrew', Arial, sans-serif;
+  /* Same gradient as login page — every page shares this atmosphere */
+  background:
+    radial-gradient(ellipse 100% 55% at 50% -5%, rgba(0,129,138,.13) 0%, transparent 65%),
+    linear-gradient(170deg, #EAF6F7 0%, #F7F8FA 55%, #EEF4F5 100%);
+  background-attachment: fixed;
+  color: var(--n-700);
+  direction: rtl;
+  line-height: 1.65;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Shared :host for all routed components ────────────────── */
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+/* ── Shared loader pulse ───────────────────────────────────── */
+@keyframes mc-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}

@@ -1,6 +1,40 @@
 <section class="page-shell">
-  <div class="card">
-    <h2>לקוחות שלי</h2>
-    <p>בדף זה יוצג המידע על הלקוחות שרופא זה מטפל בהם.</p>
+
+  <div class="header">
+    <div>
+      <h2>המטופלים שלי</h2>
+      <p>רשימת המטופלים המשויכים לרופא זה.</p>
+    </div>
+    <div>
+      <button type="button" class="primary" (click)="goBack()">חזרה ללוח הבקרה</button>
+    </div>
   </div>
+
+  <p *ngIf="error" class="message error">{{ error }}</p>
+
+  <div class="loader-row" *ngIf="loading">
+    <span>טוען מטופלים...</span>
+  </div>
+
+  <div class="card table-card" *ngIf="!loading">
+    <h3>מטופלים רשומים</h3>
+
+    <ul *ngIf="patients.length" class="appointment-list">
+      <li *ngFor="let patient of patients" class="appointment-item">
+        <div class="appointment-top">
+          <div class="appointment-title">{{ patient.firstName }} {{ patient.lastName }}</div>
+          <button type="button" class="primary" (click)="viewHistory(patient.customerId)">
+            היסטוריית טיפולים
+          </button>
+        </div>
+        <div><strong>תעודת זהות:</strong> {{ patient.customerId }}</div>
+        <div><strong>טלפון:</strong> {{ patient.phone }}</div>
+        <div><strong>אימייל:</strong> {{ patient.email }}</div>
+        <div><strong>ביקור אחרון:</strong> {{ patient.lastVisit }}</div>
+      </li>
+    </ul>
+
+    <p *ngIf="!patients.length">לא נמצאו מטופלים.</p>
+  </div>
+
 </section>
