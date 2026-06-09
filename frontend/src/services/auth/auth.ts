@@ -1,30 +1,48 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
+import { API_ROUTES } from '../../app/api-routes';
+
+/** Matches backend LoginRequest – camelCase "id" (case-insensitive on server) */
+export interface LoginRequest {
+  id: string;
+}
+
+export interface LoginResponse {
+  userId: string;
+  userType: string;
+  token: string;
+}
 
 @Injectable({
-  providedIn: 'root' 
+  providedIn: 'root',
 })
 export class Auth {
-  private apiUrl = 'https://localhost:3001/api/Auth';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  login(id: string): Observable<LoginResponse> {
+    const trimmedId = id.trim();
+    const body: LoginRequest = { id: trimmedId };
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  // התחברות (Login)
-  login(credentials: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
-      tap((response: any) => {
+    return this.http.post<LoginResponse>(API_ROUTES.authLogin, body, { headers }).pipe(
+      tap((response) => {
         if (response.token) {
           localStorage.setItem('token', response.token);
           localStorage.setItem('userType', response.userType);
+          localStorage.setItem('userId', response.userId);
         }
       })
     );
   }
 
-  // התנתקות
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('userType');
+    localStorage.removeItem('userId');
+  }
+
+  getLoggedInUserId(): string | null {
+    return localStorage.getItem('userId');
   }
 }

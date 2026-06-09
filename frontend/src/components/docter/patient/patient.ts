@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Appointment } from '../../../services/oppointment/appointment';
+import { DoctorService } from '../../../app/doctor.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -20,7 +20,7 @@ export class Patient {
   description: string = '';
   date: string = '';
 
-  constructor(private appointmentService: Appointment, private route: ActivatedRoute) {}
+  constructor(private doctorService: DoctorService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -32,7 +32,7 @@ export class Patient {
 
   getAppointment() {
 
-    this.appointmentService
+    this.doctorService
       .getAppointmentById(this.appointmentId)
       .subscribe({
         next: (appointment: any) => {
@@ -49,7 +49,7 @@ export class Patient {
 
    saveDescription() {
 
-    this.appointmentService
+    this.doctorService
       .updateDescription(
         this.appointmentId,
         this.description
@@ -72,7 +72,7 @@ export class Patient {
 
   finishAppointment() {
 
-  this.appointmentService
+  this.doctorService
     .finishAppointment(this.appointmentId)
     .subscribe({
 

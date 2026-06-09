@@ -1,141 +1,320 @@
-<section class="page-shell">
-  <div class="header">
-    <div>
-      <h2>ניהול תורים ולקוח</h2>
-      <p>הזן תעודת זהות וחלץ תורים, היסטוריה ופרטי לקוח.</p>
+<div class="page-container">
+  <h1 class="page-title">ניהול תורים ולקוח</h1>
+  <p class="page-subtitle">צפה בתורים, הזמן תור חדש ועדכן את פרטי הלקוח.</p>
+
+  <mat-card appearance="outlined" class="search-card">
+    <mat-card-content>
+      <div class="search-row">
+        <mat-form-field appearance="outline">
+          <mat-label>תעודת זהות</mat-label>
+          <input matInput type="text" [(ngModel)]="searchCustomerId" placeholder="הזן תעודת זהות" />
+          <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
+        <button mat-flat-button color="primary" type="button" (click)="loadData(searchCustomerId)">
+          <mat-icon>refresh</mat-icon>
+          טען נתונים
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  @if (error) {
+    <div class="banner error-banner">{{ error }}</div>
+  }
+  @if (status) {
+    <div class="banner success-banner">{{ status }}</div>
+  }
+
+  @if (loadingAppointments || loadingHistory || loadingDetails) {
+    <div class="loading-row">
+      <mat-spinner diameter="28"></mat-spinner>
+      <span>טוען נתונים...</span>
     </div>
-    <div class="search-row">
-      <input type="text" placeholder="תעודת זהות" #customerIdInput />
-      <button type="button" (click)="loadData(customerIdInput.value)">טען נתונים</button>
-    </div>
-  </div>
+  }
 
-  <p *ngIf="error" class="message error">{{ error }}</p>
-  <p *ngIf="status" class="message success">{{ status }}</p>
+  @if (currentCustomerId) {
+    <section class="cards-grid">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>add_circle</mat-icon>
+          <mat-card-title>צור תור חדש</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>בחר רופא</mat-label>
+            <mat-icon matPrefix>medical_services</mat-icon>
+            <mat-select
+              [(ngModel)]="createDoctorId"
+              (ngModelChange)="onCreateDoctorOrDateChange()"
+              [disabled]="loadingDoctors"
+            >
+              <mat-option value="">בחר רופא</mat-option>
+              @for (doctor of doctors; track doctor.id) {
+                <mat-option [value]="doctor.id">{{ getDoctorLabel(doctor) }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
 
-  <div class="loader-row" *ngIf="loadingAppointments || loadingHistory || loadingDetails">
-    <span *ngIf="loadingAppointments">טוען תורים...</span>
-    <span *ngIf="loadingHistory">טוען היסטוריה...</span>
-    <span *ngIf="loadingDetails">טוען פרטי לקוח...</span>
-  </div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>תאריך תור</mat-label>
+            <input
+              matInput
+              type="date"
+              [(ngModel)]="createBookingDate"
+              (ngModelChange)="onCreateDoctorOrDateChange()"
+            />
+            <mat-icon matPrefix>calendar_today</mat-icon>
+          </mat-form-field>
 
-  <section class="forms-grid" *ngIf="currentCustomerId">
-    <div class="card">
-      <h3>צור תור חדש</h3>
-      <div class="form-field">
-        <label>מזהה רופא</label>
-        <input type="text" [(ngModel)]="createWorkerId" placeholder="תעודת זהות רופא" />
-      </div>
-      <div class="form-field">
-        <label>תיאור טיפול</label>
-        <input type="text" [(ngModel)]="createDescription" placeholder="תיאור הטיפול" />
-      </div>
-      <div class="form-field">
-        <label>תאריך ושעה</label>
-        <input type="datetime-local" [(ngModel)]="createDate" />
-      </div>
-      <button type="button" class="primary" (click)="createAppointment()">צור תור חדש</button>
-    </div>
+          @if (createDoctorId && createBookingDate) {
+            <div class="slot-section">
+              <strong>זמנים פנויים</strong>
+              @if (loadingCreateSlots) {
+                <div class="loading-row">
+                  <mat-spinner diameter="24"></mat-spinner>
+                  <span>טוען זמנים פנויים...</span>
+                </div>
+              } @else if (createAvailableSlots.length) {
+                <div class="slot-grid">
+                  @for (slot of createAvailableSlots; track slot) {
+                    <button
+                      mat-stroked-button
+                      type="button"
+                      [class.slot-selected]="createDate === formatDateForInput(slot)"
+                      (click)="selectCreateSlot(slot)"
+                    >
+                      {{ formatSlotLabel(slot) }}
+                    </button>
+                  }
+                </div>
+              } @else {
+                <p class="hint-text">אין זמנים פנויים בתאריך זה. נסה תאריך אחר.</p>
+              }
+            </div>
+          }
 
-    <div class="card">
-      <h3>עדכון תור קיים</h3>
-      <div class="form-field">
-        <label>בחר תור מהרשימה</label>
-      </div>
-      <div class="form-field">
-        <label>מזהה תור</label>
-        <input type="number" [(ngModel)]="appointmentId" placeholder="מספר תור" />
-      </div>
-      <div class="form-field">
-        <label>מזהה רופא</label>
-        <input type="text" [(ngModel)]="appointmentWorkerId" placeholder="תעודת זהות רופא" />
-      </div>
-      <div class="form-field">
-        <label>תיאור טיפול</label>
-        <input type="text" [(ngModel)]="appointmentDescription" placeholder="תיאור הטיפול" />
-      </div>
-      <div class="form-field">
-        <label>תאריך ושעה</label>
-        <input type="datetime-local" [(ngModel)]="appointmentDate" />
-      </div>
-      <div class="button-row">
-        <button type="button" class="primary" (click)="submitAppointment()">עדכן תור</button>
-        <button type="button" class="secondary" (click)="clearSelectedAppointment()">נקה בחירת תור</button>
-      </div>
-    </div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>תיאור טיפול</mat-label>
+            <input matInput type="text" [(ngModel)]="createDescription" />
+            <mat-icon matPrefix>description</mat-icon>
+          </mat-form-field>
 
-    <div class="card table-card full-width customer-info-card">
-      <h3>פרטי לקוח</h3>
-      <div class="customer-info">
-        <div><strong>תעודת זהות:</strong> {{ currentCustomerId }}</div>
-        <div><strong>שם מלא:</strong> {{ settingsFirstName }} {{ settingsLastName }}</div>
-        <div><strong>טלפון:</strong> {{ settingsPhone }}</div>
-        <div><strong>כתובת:</strong> {{ settingsAdress }}</div>
-        <div><strong>אימייל:</strong> {{ settingsEmail }}</div>
-        <div><strong>ביקור אחרון:</strong> {{ settingsLastVisit ? (settingsLastVisit | date : 'yyyy-MM-dd HH:mm') : 'לא קיים' }}</div>
-      </div>
-    </div>
+          @if (createDate) {
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>זמן שנבחר</mat-label>
+              <input matInput type="datetime-local" [(ngModel)]="createDate" readonly />
+            </mat-form-field>
+          }
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-flat-button color="primary" type="button" (click)="createAppointment()">
+            <mat-icon>event_available</mat-icon>
+            צור תור חדש
+          </button>
+        </mat-card-actions>
+      </mat-card>
 
-    <div class="card full-width">
-      <h3>עדכון הגדרות לקוח</h3>
-      <div class="form-grid">
-        <div class="form-field">
-          <label>שם פרטי</label>
-          <input type="text" [(ngModel)]="settingsFirstName" placeholder="שם פרטי" />
-        </div>
-        <div class="form-field">
-          <label>שם משפחה</label>
-          <input type="text" [(ngModel)]="settingsLastName" placeholder="שם משפחה" />
-        </div>
-        <div class="form-field">
-          <label>טלפון</label>
-          <input type="text" [(ngModel)]="settingsPhone" placeholder="טלפון" />
-        </div>
-        <div class="form-field">
-          <label>כתובת</label>
-          <input type="text" [(ngModel)]="settingsAdress" placeholder="כתובת" />
-        </div>
-        <div class="form-field">
-          <label>אימייל</label>
-          <input type="email" [(ngModel)]="settingsEmail" placeholder="אימייל" />
-        </div>
-        <div class="form-field">
-          <label>תאריך ביקור אחרון</label>
-          <input type="datetime-local" [(ngModel)]="settingsLastVisit" />
-        </div>
-      </div>
-      <button type="button" class="primary" (click)="submitSettings()">עדכן הגדרות לקוח</button>
-    </div>
-  </section>
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>edit_calendar</mat-icon>
+          <mat-card-title>עדכון תור קיים</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>מזהה תור</mat-label>
+            <input matInput type="number" [(ngModel)]="appointmentId" />
+          </mat-form-field>
 
-  <section class="tables-row" *ngIf="currentCustomerId">
-    <div class="card table-card">
-      <h3>תורים עתידיים</h3>
-      <ul *ngIf="appointments.length" class="appointment-list">
-        <li *ngFor="let item of appointments" class="appointment-item">
-          <div class="appointment-top">
-            <div class="appointment-title">תור #{{ item.id }}</div>
-            <button type="button" class="secondary" (click)="selectAppointment(item)">בחר לעריכה</button>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>בחר רופא</mat-label>
+            <mat-select
+              [(ngModel)]="appointmentDoctorId"
+              (ngModelChange)="onEditDoctorOrDateChange()"
+              [disabled]="loadingDoctors"
+            >
+              <mat-option value="">בחר רופא</mat-option>
+              @for (doctor of doctors; track doctor.id) {
+                <mat-option [value]="doctor.id">{{ getDoctorLabel(doctor) }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>תאריך תור</mat-label>
+            <input
+              matInput
+              type="date"
+              [(ngModel)]="appointmentBookingDate"
+              (ngModelChange)="onEditDoctorOrDateChange()"
+            />
+          </mat-form-field>
+
+          @if (appointmentDoctorId && appointmentBookingDate) {
+            <div class="slot-section">
+              <strong>זמנים פנויים</strong>
+              @if (loadingEditSlots) {
+                <div class="loading-row">
+                  <mat-spinner diameter="24"></mat-spinner>
+                </div>
+              } @else if (editAvailableSlots.length) {
+                <div class="slot-grid">
+                  @for (slot of editAvailableSlots; track slot) {
+                    <button
+                      mat-stroked-button
+                      type="button"
+                      [class.slot-selected]="appointmentDate === formatDateForInput(slot)"
+                      (click)="selectEditSlot(slot)"
+                    >
+                      {{ formatSlotLabel(slot) }}
+                    </button>
+                  }
+                </div>
+              } @else {
+                <p class="hint-text">אין זמנים פנויים בתאריך זה.</p>
+              }
+            </div>
+          }
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>תיאור טיפול</mat-label>
+            <input matInput type="text" [(ngModel)]="appointmentDescription" />
+          </mat-form-field>
+
+          @if (appointmentDate) {
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>זמן שנבחר</mat-label>
+              <input matInput type="datetime-local" [(ngModel)]="appointmentDate" readonly />
+            </mat-form-field>
+          }
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-flat-button color="primary" type="button" (click)="submitAppointment()">
+            עדכן תור
+          </button>
+          <button mat-button type="button" (click)="clearSelectedAppointment()">נקה בחירה</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card appearance="outlined" class="full-width">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>person</mat-icon>
+          <mat-card-title>פרטי לקוח</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="customer-info-grid">
+            <div class="info-chip"><strong>תעודת זהות</strong>{{ currentCustomerId }}</div>
+            <div class="info-chip">
+              <strong>שם מלא</strong>{{ settingsFirstName }} {{ settingsLastName }}
+            </div>
+            <div class="info-chip"><strong>טלפון</strong>{{ settingsPhone }}</div>
+            <div class="info-chip"><strong>כתובת</strong>{{ settingsAdress }}</div>
+            <div class="info-chip"><strong>אימייל</strong>{{ settingsEmail }}</div>
+            <div class="info-chip">
+              <strong>ביקור אחרון</strong>
+              {{ settingsLastVisit ? (settingsLastVisit | date : 'yyyy-MM-dd HH:mm') : 'לא קיים' }}
+            </div>
           </div>
-          <div><strong>רופא:</strong> {{ item.workerId }}</div>
-          <div><strong>תאריך:</strong> {{ item.date }}</div>
-          <div><strong>טיפול:</strong> {{ item.treatmentDescription }}</div>
-        </li>
-      </ul>
-      <p *ngIf="!loadingAppointments && !appointments.length">אין תורים במערכת.</p>
-    </div>
+        </mat-card-content>
+      </mat-card>
 
-    <div class="card table-card">
-      <h3>היסטוריית תורים</h3>
-      <ul *ngIf="history.length" class="appointment-list">
-        <li *ngFor="let item of history" class="appointment-item">
-          <div><strong>תור #{{ item.id }}</strong></div>
-          <div><strong>רופא:</strong> {{ item.workerId }}</div>
-          <div><strong>תאריך:</strong> {{ item.date }}</div>
-          <div><strong>טיפול:</strong> {{ item.treatmentDescription }}</div>
-        </li>
-      </ul>
-      <p *ngIf="!loadingHistory && !history.length">אין תורים במערכת.</p>
-    </div>
-  </section>
-</section>
+      <mat-card appearance="outlined" class="full-width">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>settings</mat-icon>
+          <mat-card-title>עדכון הגדרות לקוח</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="form-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>שם פרטי</mat-label>
+              <input matInput type="text" [(ngModel)]="settingsFirstName" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>שם משפחה</mat-label>
+              <input matInput type="text" [(ngModel)]="settingsLastName" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>טלפון</mat-label>
+              <input matInput type="text" [(ngModel)]="settingsPhone" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>כתובת</mat-label>
+              <input matInput type="text" [(ngModel)]="settingsAdress" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>אימייל</mat-label>
+              <input matInput type="email" [(ngModel)]="settingsEmail" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>תאריך ביקור אחרון</mat-label>
+              <input matInput type="datetime-local" [(ngModel)]="settingsLastVisit" />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-flat-button color="primary" type="button" (click)="submitSettings()">
+            עדכן הגדרות
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </section>
+
+    <section class="tables-row">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>תורים עתידיים</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          @if (appointments.length) {
+            <ul class="appointment-list">
+              @for (item of appointments; track item.id) {
+                <mat-card appearance="outlined" class="appointment-item-card">
+                  <mat-card-content>
+                    <div class="appointment-item-header">
+                      <strong>תור #{{ item.id }}</strong>
+                      <button mat-stroked-button type="button" (click)="selectAppointment(item)">
+                        בחר לעריכה
+                      </button>
+                    </div>
+                    <div class="appointment-meta">
+                      <span>רופא: {{ getDoctorName(item.workerId) }}</span>
+                      <span>תאריך: {{ item.date | date : 'yyyy-MM-dd HH:mm' }}</span>
+                      <span>טיפול: {{ item.treatmentDescription }}</span>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              }
+            </ul>
+          } @else if (!loadingAppointments) {
+            <p class="hint-text">אין תורים במערכת.</p>
+          }
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>היסטוריית תורים</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          @if (history.length) {
+            <ul class="appointment-list">
+              @for (item of history; track item.id) {
+                <mat-card appearance="outlined" class="appointment-item-card">
+                  <mat-card-content>
+                    <strong>תור #{{ item.id }}</strong>
+                    <div class="appointment-meta">
+                      <span>רופא: {{ getDoctorName(item.workerId) }}</span>
+                      <span>תאריך: {{ item.date | date : 'yyyy-MM-dd HH:mm' }}</span>
+                      <span>טיפול: {{ item.treatmentDescription }}</span>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              }
+            </ul>
+          } @else if (!loadingHistory) {
+            <p class="hint-text">אין היסטוריה במערכת.</p>
+          }
+        </mat-card-content>
+      </mat-card>
+    </section>
+  }
+</div>

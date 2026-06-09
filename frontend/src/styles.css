@@ -1,1 +1,150 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  direction: rtl;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-title {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--mat-sys-on-surface);
+}
+
+.page-subtitle {
+  margin: 0 0 24px;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.banner {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.error-banner {
+  background-color: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+}
+
+.success-banner {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+}
+
+.cards-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-grid {
+  display: grid;
+  gap: 8px 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.slot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.slot-selected {
+  background-color: var(--app-primary, #007bff) !important;
+  color: var(--app-on-primary, #ffffff) !important;
+}
+
+.loading-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.appointment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.appointment-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.appointment-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.9rem;
+}
+
+.customer-info-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.info-chip {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--mat-sys-surface-container-low);
+  font-size: 0.9rem;
+}
+
+.info-chip strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--mat-sys-on-surface);
+  font-weight: 500;
+}
+
+.search-card {
+  margin-bottom: 24px;
+}
+
+.search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.search-row mat-form-field {
+  flex: 1 1 240px;
+  min-width: 200px;
+}
+
+.tables-row {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  margin-top: 8px;
+}

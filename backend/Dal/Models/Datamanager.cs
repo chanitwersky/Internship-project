@@ -26,8 +26,13 @@ public partial class Datamanager : DbContext
     public virtual DbSet<Worker> Workers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename='H:\\c# project\\database\\MyDb.mdf';Integrated Security=True;Connect Timeout=30");
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer(
+                "Server=(localdb)\\mssqllocaldb;Database=InternshipProjectDb;Trusted_Connection=True;MultipleActiveResultSets=true");
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -144,6 +149,9 @@ public partial class Datamanager : DbContext
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .HasColumnName("email");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .HasColumnName("name");
             entity.Property(e => e.FirstName)
                 .HasMaxLength(50)
                 .HasColumnName("firstName");
@@ -156,7 +164,7 @@ public partial class Datamanager : DbContext
             entity.Property(e => e.Phone)
                 .HasMaxLength(10)
                 .HasColumnName("phone");
-            entity.Property(e => e.Specialization)
+            entity.Property(e => e.Specialty)
                 .HasMaxLength(50)
                 .HasColumnName("specialization");
         });

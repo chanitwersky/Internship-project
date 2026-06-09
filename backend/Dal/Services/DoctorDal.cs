@@ -33,6 +33,17 @@ namespace Dal.Services
             return shifts;
         }
 
+        public async Task<List<Queue>> GetTodayAppointments(string doctorId)
+        {
+            var today = DateTime.Today;
+            var tomorrow = today.AddDays(1);
+
+            return await _context.Queues
+                .AsNoTracking()
+                .Where(q => q.WorkerId == doctorId && q.Date >= today && q.Date < tomorrow)
+                .ToListAsync();
+        }
+
         public async Task UpdateAppointment(string treatmentDescription,int id)
         {
             try

@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dal.Models;
 
@@ -8,6 +8,8 @@ public partial class Worker
     public string Password;
 
     public string WorkerId { get; set; } = null!;
+
+    public string Name { get; set; } = null!;
 
     public string FirstName { get; set; } = null!;
 
@@ -19,7 +21,8 @@ public partial class Worker
 
     public string LengthOfTreatment { get; set; } = null!;
 
-    public string Specialization { get; set; } = null!;
+    [Column("specialization")]
+    public string Specialty { get; set; } = null!;
 
     public virtual ICollection<QueueHistory> QueueHistories { get; set; } = new List<QueueHistory>();
 

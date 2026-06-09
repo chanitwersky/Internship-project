@@ -1,1 +1,35 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary" class="app-toolbar">
+  <mat-icon class="brand-icon">local_hospital</mat-icon>
+  <span class="brand-title">מערכת תורים</span>
+
+  <span class="toolbar-spacer"></span>
+
+  @if (isLoggedIn() && userType() === 'Patient') {
+    <a mat-button routerLink="/customer" routerLinkActive="active-link">
+      <mat-icon>event</mat-icon>
+      התורים שלי
+    </a>
+  }
+
+  @if (isLoggedIn() && userType() === 'Doctor') {
+    <a mat-button routerLink="/doctor" routerLinkActive="active-link">
+      <mat-icon>dashboard</mat-icon>
+      לוח בקרה
+    </a>
+    <a mat-button routerLink="/doctor/profile" routerLinkActive="active-link">
+      <mat-icon>person</mat-icon>
+      פרופיל
+    </a>
+  }
+
+  @if (isLoggedIn()) {
+    <button mat-button type="button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      יציאה
+    </button>
+  }
+</mat-toolbar>
+
+<main class="app-content" [class.app-content--centered]="isLoginPage()">
+  <router-outlet />
+</main>

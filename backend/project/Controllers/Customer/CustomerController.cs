@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace project.Controllers.Customer;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/customer")]
 public class CustomerController : ControllerBase
 {
     private readonly Datamanager _context;
@@ -36,11 +36,6 @@ public class CustomerController : ControllerBase
             })
             .ToListAsync();
 
-        if (!appointments.Any())
-        {
-            return NotFound(new { Message = "No upcoming appointments found for this customer." });
-        }
-
         return Ok(appointments);
     }
 
@@ -60,11 +55,6 @@ public class CustomerController : ControllerBase
                 q.Date
             })
             .ToListAsync();
-
-        if (!history.Any())
-        {
-            return NotFound(new { Message = "No appointment history found for this customer." });
-        }
 
         return Ok(history);
     }

@@ -1,32 +1,25 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DoctorAppointment, DoctorService } from '../../app/doctor.service';
 
+/**
+ * @deprecated Use DoctorService directly – kept for backward compatibility.
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class Appointment {
+  constructor(private doctorService: DoctorService) {}
 
-  private apiUrl = 'https://localhost:3001/api/Doctor';
-
-  constructor(private http: HttpClient) { }
-
-  updateDescription(id: number, description: string): Observable<any> {
-    return this.http.patch(
-      `${this.apiUrl}/update-description/${id}`,
-      description
-    );
+  updateDescription(id: number, description: string): Observable<unknown> {
+    return this.doctorService.updateDescription(id, description);
   }
 
-  getAppointmentById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/appointments/${id}`);
+  getAppointmentById(id: number): Observable<DoctorAppointment> {
+    return this.doctorService.getAppointmentById(id);
   }
 
-  finishAppointment(id: number): Observable<any> {
-    return this.http.post(
-      `${this.apiUrl}/finish/${id}`,
-      {}
-    );
+  finishAppointment(id: number): Observable<unknown> {
+    return this.doctorService.finishAppointment(id);
   }
-
 }

@@ -1,7 +1,8 @@
-
-
 using Bl.Services;
 using Microsoft.AspNetCore.Mvc;
+using project.Dtos.Auth;
+
+namespace project.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -15,12 +16,20 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login(string id, string password)
+    public async Task<IActionResult> Login([FromBody] LoginRequest? request)
     {
-        var result = await _authBL.Login(id, password);
+        var id = request?.Id?.Trim();
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            return BadRequest(new { Message = "ID is required. Send JSON: { \"id\": \"123456789\" }" });
+        }
+
+        var result = await _authBL.Login(id);
 
         if (result == null)
+        {
             return Unauthorized();
+        }
 
         return Ok(result);
     }

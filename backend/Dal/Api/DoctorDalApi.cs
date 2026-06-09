@@ -11,6 +11,7 @@ namespace Dal.Api
     {
         Task<List<Customer>> GetAllpait(string doctorId);
         Task<List<Shift>> GetShiftsByDoctorId(string doctorId);
+        Task<List<Queue>> GetTodayAppointments(string doctorId);
         Task UpdateAppointment(string treatmentDescription, int id);
         Task<Queue> GetAppointmentByAppointmentId(int appointmentId);
         //Task<bool> DeleteOppointmentByAppointmentId(string appointmentId);

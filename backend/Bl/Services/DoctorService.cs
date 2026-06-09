@@ -28,6 +28,11 @@ namespace Bl.Services
             return await _DoctorService.GetShiftsByDoctorId(doctorId);
         }
 
+        public async Task<List<Queue>> GetTodayAppointments(string doctorId)
+        {
+            return await _DoctorService.GetTodayAppointments(doctorId);
+        }
+
         public async Task UpdateAppointment(string treatmentDescription, int id)
         {
             await _DoctorService.UpdateAppointment(treatmentDescription,id);

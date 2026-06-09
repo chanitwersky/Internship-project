@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
+import { API_ROUTES } from './api-routes';
 
 export interface CustomerAppointment {
   id: number;
@@ -39,20 +40,22 @@ export interface UpdateCustomerSettingsRequest {
   providedIn: 'root'
 })
 export class CustomerService {
-  private baseUrl = '/api/customer';
-
   constructor(private http: HttpClient) {}
 
   getAppointments(customerId: string): Observable<CustomerAppointment[]> {
-    return this.http.get<CustomerAppointment[]>(`${this.baseUrl}/appointments/${customerId}`);
+    return this.http
+      .get<CustomerAppointment[]>(API_ROUTES.customerAppointments(customerId))
+      .pipe(catchError(() => of([])));
   }
 
   getHistory(customerId: string): Observable<CustomerAppointment[]> {
-    return this.http.get<CustomerAppointment[]>(`${this.baseUrl}/history/${customerId}`);
+    return this.http
+      .get<CustomerAppointment[]>(API_ROUTES.customerHistory(customerId))
+      .pipe(catchError(() => of([])));
   }
 
   getCustomerDetails(customerId: string): Observable<CustomerDetails> {
-    return this.http.get<CustomerDetails>(`${this.baseUrl}/${customerId}`);
+    return this.http.get<CustomerDetails>(API_ROUTES.customerProfile(customerId));
   }
 
   updateAppointment(
@@ -60,13 +63,16 @@ export class CustomerService {
     appointmentId: number,
     request: UpdateAppointmentRequest
   ): Observable<void> {
-    return this.http.put<void>(`${this.baseUrl}/appointments/${customerId}/${appointmentId}`, request);
+    return this.http.put<void>(
+      API_ROUTES.customerAppointmentUpdate(customerId, appointmentId),
+      request
+    );
   }
 
   updateCustomerSettings(
     customerId: string,
     request: UpdateCustomerSettingsRequest
   ): Observable<void> {
-    return this.http.put<void>(`${this.baseUrl}/settings/${customerId}`, request);
+    return this.http.put<void>(API_ROUTES.customerSettings(customerId), request);
   }
 }

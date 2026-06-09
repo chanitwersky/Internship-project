@@ -1,40 +1,68 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {
   CustomerAppointment,
   CustomerService,
   UpdateAppointmentRequest,
   UpdateCustomerSettingsRequest,
 } from './customer.service';
+import { BookingService, DoctorListItem, formatDoctorOption } from './booking.service';
+import { Auth } from '../services/auth/auth';
 
 @Component({
   selector: 'app-customer-appointments',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './customer-appointments.html',
   styleUrls: ['./customer-appointments.css'],
 })
-export class CustomerAppointmentsComponent {
+export class CustomerAppointmentsComponent implements OnInit {
   appointments: CustomerAppointment[] = [];
   history: CustomerAppointment[] = [];
+  doctors: DoctorListItem[] = [];
   loadingAppointments = false;
   loadingHistory = false;
   loadingDetails = false;
+  loadingDoctors = false;
+  loadingCreateSlots = false;
+  loadingEditSlots = false;
   error: string | null = null;
   status: string | null = null;
   currentCustomerId = '';
+  searchCustomerId = '';
 
   appointmentId = '';
-  appointmentWorkerId = '';
+  appointmentDoctorId = '';
   appointmentDescription = '';
   appointmentDate = '';
+  appointmentBookingDate = '';
 
   selectedAppointment: CustomerAppointment | null = null;
+  editAvailableSlots: string[] = [];
 
-  createWorkerId = '';
+  createDoctorId = '';
   createDescription = '';
   createDate = '';
+  createBookingDate = '';
+  createAvailableSlots: string[] = [];
 
   settingsFirstName = '';
   settingsLastName = '';
@@ -43,7 +71,89 @@ export class CustomerAppointmentsComponent {
   settingsEmail = '';
   settingsLastVisit = '';
 
-  constructor(private customerService: CustomerService) {}
+  constructor(
+    private customerService: CustomerService,
+    private bookingService: BookingService,
+    private auth: Auth
+  ) {}
+
+  ngOnInit(): void {
+    this.createBookingDate = this.todayDateString();
+    this.loadDoctors();
+
+    const loggedInUserId = this.auth.getLoggedInUserId();
+    if (loggedInUserId) {
+      this.searchCustomerId = loggedInUserId;
+      this.loadData(loggedInUserId);
+    }
+  }
+
+  loadDoctors(): void {
+    this.loadingDoctors = true;
+    this.bookingService.getDoctors().subscribe({
+      next: (data) => {
+        this.doctors = data;
+        this.loadingDoctors = false;
+      },
+      error: () => {
+        this.error = 'נכשל בטעינת רשימת הרופאים. וודא שהשרת פועל.';
+        this.loadingDoctors = false;
+      },
+    });
+  }
+
+  onCreateDoctorOrDateChange(): void {
+    this.createAvailableSlots = [];
+    this.createDate = '';
+
+    if (!this.createDoctorId || !this.createBookingDate) {
+      return;
+    }
+
+    this.loadingCreateSlots = true;
+    this.bookingService.getAvailability(this.createDoctorId, this.createBookingDate).subscribe({
+      next: (response) => {
+        this.createAvailableSlots = response.slots ?? [];
+        this.loadingCreateSlots = false;
+      },
+      error: () => {
+        this.error = 'נכשל בטעינת זמנים פנויים. בחר רופא ותאריך תקינים.';
+        this.loadingCreateSlots = false;
+      },
+    });
+  }
+
+  onEditDoctorOrDateChange(): void {
+    this.editAvailableSlots = [];
+
+    if (!this.appointmentDoctorId || !this.appointmentBookingDate) {
+      return;
+    }
+
+    this.loadingEditSlots = true;
+    this.bookingService.getAvailability(this.appointmentDoctorId, this.appointmentBookingDate).subscribe({
+      next: (response) => {
+        this.editAvailableSlots = response.slots ?? [];
+        this.loadingEditSlots = false;
+      },
+      error: () => {
+        this.error = 'נכשל בטעינת זמנים פנויים לעריכה.';
+        this.loadingEditSlots = false;
+      },
+    });
+  }
+
+  selectCreateSlot(slot: string): void {
+    this.createDate = this.formatDateForInput(slot);
+    this.status = 'נבחר זמן פנוי לתור החדש.';
+    this.error = null;
+  }
+
+  selectEditSlot(slot: string): void {
+    this.appointmentDate = this.formatDateForInput(slot);
+    this.status = 'נבחר זמן פנוי לעדכון התור.';
+    this.error = null;
+  }
 
   loadData(customerId: string): void {
     this.error = null;
@@ -113,14 +223,14 @@ export class CustomerAppointmentsComponent {
       return;
     }
 
-    if (!this.createWorkerId.trim() || !this.createDescription.trim() || !this.createDate.trim()) {
-      this.error = 'יש למלא את כל פרטי יצירת התור.';
+    if (!this.createDoctorId || !this.createDescription.trim() || !this.createDate.trim()) {
+      this.error = 'יש לבחור רופא, זמן פנוי ולמלא תיאור טיפול.';
       return;
     }
 
     const nextId = this.getNextAppointmentId();
     const request: UpdateAppointmentRequest = {
-      workerId: this.createWorkerId.trim(),
+      workerId: this.createDoctorId,
       treatmentDescription: this.createDescription.trim(),
       date: this.createDate,
     };
@@ -148,9 +258,11 @@ export class CustomerAppointmentsComponent {
   }
 
   private clearCreateForm(): void {
-    this.createWorkerId = '';
+    this.createDoctorId = '';
     this.createDescription = '';
     this.createDate = '';
+    this.createBookingDate = this.todayDateString();
+    this.createAvailableSlots = [];
   }
 
   submitAppointment(): void {
@@ -163,13 +275,18 @@ export class CustomerAppointmentsComponent {
     }
 
     const appointmentId = Number(this.appointmentId);
-    if (!appointmentId || !this.appointmentWorkerId.trim() || !this.appointmentDescription.trim() || !this.appointmentDate.trim()) {
-      this.error = 'יש למלא את כל פרטי התור.';
+    if (
+      !appointmentId ||
+      !this.appointmentDoctorId ||
+      !this.appointmentDescription.trim() ||
+      !this.appointmentDate.trim()
+    ) {
+      this.error = 'יש לבחור רופא, זמן ולמלא את כל פרטי התור.';
       return;
     }
 
     const request: UpdateAppointmentRequest = {
-      workerId: this.appointmentWorkerId.trim(),
+      workerId: this.appointmentDoctorId,
       treatmentDescription: this.appointmentDescription.trim(),
       date: this.appointmentDate,
     };
@@ -190,17 +307,21 @@ export class CustomerAppointmentsComponent {
   selectAppointment(item: CustomerAppointment): void {
     this.selectedAppointment = item;
     this.appointmentId = item.id.toString();
-    this.appointmentWorkerId = item.workerId;
+    this.appointmentDoctorId = item.workerId;
     this.appointmentDescription = item.treatmentDescription;
     this.appointmentDate = this.formatDateForInput(item.date);
+    this.appointmentBookingDate = this.toDateString(item.date);
     this.status = `נבחר תור מספר ${item.id} לעריכה.`;
+    this.onEditDoctorOrDateChange();
   }
 
   clearAppointmentForm(): void {
     this.appointmentId = '';
-    this.appointmentWorkerId = '';
+    this.appointmentDoctorId = '';
     this.appointmentDescription = '';
     this.appointmentDate = '';
+    this.appointmentBookingDate = '';
+    this.editAvailableSlots = [];
   }
 
   clearSelectedAppointment(): void {
@@ -210,7 +331,38 @@ export class CustomerAppointmentsComponent {
     this.error = null;
   }
 
-  private formatDateForInput(dateValue: string): string {
+  getDoctorLabel(doctor: DoctorListItem): string {
+    return formatDoctorOption(doctor);
+  }
+
+  getDoctorName(doctorId: string): string {
+    const doctor = this.doctors.find((item) => item.id === doctorId);
+    return doctor ? formatDoctorOption(doctor) : doctorId;
+  }
+
+  formatSlotLabel(slot: string): string {
+    const date = new Date(slot);
+    if (isNaN(date.getTime())) {
+      return slot;
+    }
+
+    return date.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  private todayDateString(): string {
+    return new Date().toISOString().slice(0, 10);
+  }
+
+  private toDateString(dateValue: string): string {
+    const date = new Date(dateValue);
+    if (isNaN(date.getTime())) {
+      return this.todayDateString();
+    }
+
+    return date.toISOString().slice(0, 10);
+  }
+
+  formatDateForInput(dateValue: string): string {
     const date = new Date(dateValue);
     if (isNaN(date.getTime())) {
       return '';

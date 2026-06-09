@@ -21,26 +21,21 @@ namespace _1_contrller.Controllers
         public async Task<ActionResult<List<Customer>>> GetAllpait(string doctorId)
         {
             var result = await _BlDoctorS.GetAllpait(doctorId);
-
-            if (result == null || result.Count == 0)
-            {
-                return NotFound("לא נמצאו מטופלים לרופא זה");
-            }
-
-            return Ok(result);
+            return Ok(result ?? new List<Customer>());
         }
 
         [HttpGet("{doctorId}/shifts")]
         public async Task<ActionResult<List<Shift>>> GetShiftsByDoctorId(string doctorId)
         {
             var result = await _BlDoctorS.GetShiftsByDoctorId(doctorId);
+            return Ok(result ?? new List<Shift>());
+        }
 
-            if (result == null || result.Count == 0)
-            {
-                return NotFound("לא נמצאו משמרות לרופא זה");
-            }
-
-            return Ok(result);
+        [HttpGet("{doctorId}/appointments/today")]
+        public async Task<ActionResult<List<Queue>>> GetTodayAppointments(string doctorId)
+        {
+            var result = await _BlDoctorS.GetTodayAppointments(doctorId);
+            return Ok(result ?? new List<Queue>());
         }
 
         [HttpPatch("update-description/{id}")]
@@ -55,7 +50,7 @@ namespace _1_contrller.Controllers
             {
                 await _BlDoctorS.UpdateAppointment(description, id);
 
-                return Ok(new { message = "תיאור התור עודכן בהצלחה" });
+                return Ok(new { message = "Treatment description updated successfully" });
             }
             catch (KeyNotFoundException ex)
             {
@@ -63,7 +58,7 @@ namespace _1_contrller.Controllers
             }
             catch
             {
-                return StatusCode(500, "אירעה שגיאה בעת עדכון התור");
+                return StatusCode(500, "Failed to update treatment description");
             }
         }
 
@@ -74,7 +69,7 @@ namespace _1_contrller.Controllers
 
             if (result == null)
             {
-                return NotFound("התור לא נמצא");
+                return NotFound("Appointment not found");
             }
 
             return Ok(result);
@@ -87,7 +82,7 @@ namespace _1_contrller.Controllers
             {
                 await _BlDoctorS.FinishAppointment(appointmentId);
 
-                return Ok(new { message = "הטיפול הסתיים בהצלחה" });
+                return Ok(new { message = "Appointment finished successfully" });
             }
             catch (Exception ex)
             {

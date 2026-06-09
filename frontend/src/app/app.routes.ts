@@ -3,9 +3,8 @@ import { Login } from '../components/home/login/login';
 import { HomePage } from '../components/home/home-page/home-page';
 
 export const router: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // דף הבית מפנה ללוגין
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: Login },
-   { path: '', redirectTo: 'customer', pathMatch: 'full' },
   {
     path: 'customer',
     loadComponent: () => import('./customer-appointments.component').then((m) => m.CustomerAppointmentsComponent),
@@ -13,8 +12,10 @@ export const router: Routes = [
   {
     path: 'doctor',
     loadComponent: () => import('./doctor-dashboard.component').then((m) => m.DoctorDashboardComponent),
-    // TODO: add a doctor guard here once authentication is available
-    // canActivate: [DoctorAuthGuard],
+  },
+  {
+    path: 'doctor/profile',
+    loadComponent: () => import('./doctor-profile.component').then((m) => m.DoctorProfileComponent),
   },
   {
     path: 'doctor/appointment-fill/:id',

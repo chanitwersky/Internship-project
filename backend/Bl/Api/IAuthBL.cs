@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bl.Models;
 
-namespace Bl.Api
+namespace Bl.Api;
+
+public interface IAuthBL
 {
-    internal interface IAuthBL
-    {
-    }
+    Task<LoginResult?> Login(string id);
 }
